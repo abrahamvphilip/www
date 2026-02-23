@@ -6,7 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "check:content": "node scripts/check-copy.mjs",
+    "check:sections": "node scripts/subagents/check-section-order.mjs",
+    "ci:check": "npm run check:content && npm run lint && npm run build && npm run check:sections",
+    "subagents:mcp-gate": "node scripts/subagents/check-mcp-ready.mjs",
+    "subagents:new-check": "node scripts/subagents/new-check-iteration.mjs",
+    "visual:capture": "node scripts/visual/capture.mjs",
+    "visual:check": "node scripts/visual/check-sections.mjs"
   },
   "dependencies": {
     "next": "16.1.6",
@@ -14,6 +21,7 @@
     "react-dom": "19.2.3"
   },
   "devDependencies": {
+    "@playwright/test": "^1.58.2",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
@@ -21,6 +29,8 @@
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
+    "pixelmatch": "^7.1.0",
+    "pngjs": "^7.0.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   },

@@ -1,0 +1,13 @@
+{
+  "locked": true,
+  "lock_status": "ready",
+  "timestamp": "2026-02-23T14:25:45Z",
+  "operator": "codex",
+  "source": {
+    "figma_url": "https://www.figma.com/design/mThHQVKEqFj1xDy1jLL8UB/aion-%E2%80%94-www?node-id=738-18297&m=dev",
+    "file_key": "mThHQVKEqFj1xDy1jLL8UB",
+    "node_id": "738:18297"
+  },
+  "checksum": "2b3059a180b118d7b44fc5aef67f4c585d6151251565ca8ac6b6be7f7f489f79",
+  "notes": "Source lock applied after successful runtime MCP probe (resources/templates available) and target node metadata extraction."
+}

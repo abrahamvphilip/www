@@ -1,0 +1,100 @@
+[
+  {
+    "id": "hero-background",
+    "sectionId": "YHDHg",
+    "description": "Hero background image fill",
+    "aspectRatio": "1800:1169",
+    "treatment": "gradient-grid"
+  },
+  {
+    "id": "problem-card-a",
+    "sectionId": "IYsCw",
+    "description": "Problem strip media panel left",
+    "aspectRatio": "14:9",
+    "treatment": "gradient-grid"
+  },
+  {
+    "id": "problem-card-b",
+    "sectionId": "IYsCw",
+    "description": "Problem strip media panel center",
+    "aspectRatio": "1:1",
+    "treatment": "gradient-grid"
+  },
+  {
+    "id": "problem-card-c",
+    "sectionId": "IYsCw",
+    "description": "Problem strip media panel right",
+    "aspectRatio": "1:1",
+    "treatment": "gradient-grid"
+  },
+  {
+    "id": "forge-diagram",
+    "sectionId": "jAwkA",
+    "description": "Forge primary isometric device illustration",
+    "aspectRatio": "1:1",
+    "treatment": "isometric"
+  },
+  {
+    "id": "nexus-diagram",
+    "sectionId": "X6Q8j",
+    "description": "Nexus stacked model illustration",
+    "aspectRatio": "1:1",
+    "treatment": "isometric"
+  },
+  {
+    "id": "blocks-canvas",
+    "sectionId": "oqmDi",
+    "description": "Building blocks center canvas",
+    "aspectRatio": "1:1",
+    "treatment": "outline"
+  },
+  {
+    "id": "careers-grid",
+    "sectionId": "gwgPH",
+    "description": "Careers role strip icons",
+    "aspectRatio": "6:1",
+    "treatment": "gradient-grid"
+  },
+  {
+    "id": "resource-lead",
+    "sectionId": "atC3C",
+    "description": "Resources lead article image",
+    "aspectRatio": "16:9",
+    "treatment": "portrait"
+  },
+  {
+    "id": "resource-card-1",
+    "sectionId": "atC3C",
+    "description": "Resources card image #1",
+    "aspectRatio": "4:3",
+    "treatment": "portrait"
+  },
+  {
+    "id": "resource-card-2",
+    "sectionId": "atC3C",
+    "description": "Resources card image #2",
+    "aspectRatio": "4:3",
+    "treatment": "portrait"
+  },
+  {
+    "id": "resource-card-3",
+    "sectionId": "atC3C",
+    "description": "Resources card image #3",
+    "aspectRatio": "4:3",
+    "treatment": "portrait"
+  },
+  {
+    "id": "resource-card-4",
+    "sectionId": "atC3C",
+    "description": "Resources card image #4",
+    "aspectRatio": "4:3",
+    "treatment": "portrait"
+  },
+  {
+    "id": "footer-gallery",
+    "sectionId": "3rLbN",
+    "description": "Footer image triptych",
+    "aspectRatio": "3:1",
+    "treatment": "portrait"
+  }
+]

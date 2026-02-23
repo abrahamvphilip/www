@@ -1,0 +1,30 @@
+{
+  "section_id": "D2Lup",
+  "wave": "A",
+  "spec_status": "figma_metadata_extracted",
+  "source": {
+    "figma_node": "738:18297",
+    "figma_extracted": true,
+    "figma_only_mode": true
+  },
+  "layout": {
+    "frame": null,
+    "padding": null,
+    "gap": null,
+    "layout_mode": null
+  },
+  "typography": {
+    "tokens": []
+  },
+  "colors": {
+    "tokens": []
+  },
+  "effects": {
+    "tokens": []
+  },
+  "copy": {
+    "locked": false,
+    "lines": []
+  },
+  "notes": "Figma MCP is the authoritative source. Keep section metadata aligned to file mThHQVKEqFj1xDy1jLL8UB, root node 738:18297."
+}
