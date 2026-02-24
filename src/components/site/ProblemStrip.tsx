@@ -1,5 +1,6 @@
 import type { SiteContent } from "@/types/site";
 
+import { Grid } from "@/components/primitives/Grid";
 import { PlaceholderMedia } from "@/components/primitives/PlaceholderMedia";
 
 interface ProblemStripProps {
@@ -30,11 +31,17 @@ export function ProblemStrip({ problem }: ProblemStripProps) {
           </div>
         </div>
 
-        <div className="grid gap-3 py-0 lg:grid-cols-[minmax(0,1fr)_421px_421px]">
-          <PlaceholderMedia label="problem-card-a" ratio="854 / 445" className="rounded-[8px] bg-[var(--surface-card)]" />
-          <PlaceholderMedia label="problem-card-b" ratio="421 / 445" className="rounded-[8px] bg-[var(--surface-card)]" />
-          <PlaceholderMedia label="problem-card-c" ratio="421 / 445" className="rounded-[8px] bg-[var(--surface-card)]" />
-        </div>
+        <Grid mode="container" className="w-full py-0" gapY={{ mobile: 12 }}>
+          <Grid mode="item" span={{ mobile: 12, tablet: 12, desktop: 6 }}>
+            <PlaceholderMedia label="problem-card-a" ratio="854 / 445" className="rounded-[8px] bg-[var(--surface-card)]" />
+          </Grid>
+          <Grid mode="item" span={{ mobile: 12, tablet: 6, desktop: 3 }}>
+            <PlaceholderMedia label="problem-card-b" ratio="421 / 445" className="rounded-[8px] bg-[var(--surface-card)]" />
+          </Grid>
+          <Grid mode="item" span={{ mobile: 12, tablet: 6, desktop: 3 }}>
+            <PlaceholderMedia label="problem-card-c" ratio="421 / 445" className="rounded-[8px] bg-[var(--surface-card)]" />
+          </Grid>
+        </Grid>
 
         <div className="pb-10 pt-[52px]">
           <p className="max-w-[854px] whitespace-pre-line font-sans text-[36px] font-normal leading-[1.1666666667] tracking-[-0.48px] text-[var(--text-light)] lg:text-[48px]">

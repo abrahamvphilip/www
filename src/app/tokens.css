@@ -1,0 +1,131 @@
+:root {
+  /* Desktop base type scale (source values) */
+  --text-xxs: 10px;
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-lg: 18px;
+  --text-xl: 20px;
+  --text-2xl: 24px;
+  --text-3xl: 30px;
+  --text-4xl: 36px;
+  --text-5xl: 48px;
+  --text-6xl: 60px;
+  --text-7xl: 72px;
+  --text-8xl: 80px;
+
+  /* Responsive alias layer (desktop defaults) */
+  --text-xxs-10px: var(--text-xxs);
+  --text-xs-12px: var(--text-xs);
+  --text-sm-14px: var(--text-sm);
+  --text-base-16px: var(--text-base);
+  --text-lg-18px: var(--text-lg);
+  --text-xl-20px: var(--text-xl);
+  --text-2xl-24px: var(--text-2xl);
+  --text-3xl-30px: var(--text-3xl);
+  --text-4xl-36px: var(--text-4xl);
+  --text-5xl-48px: var(--text-5xl);
+  --text-6xl-60px: var(--text-6xl);
+  --text-7xl-72px: var(--text-7xl);
+  --text-8xl-80px: var(--text-8xl);
+
+  /* Layout foundation tokens (legacy merge) */
+  --gutter: 12px;
+  --container-gutter-mobile: var(--gutter);
+  --container-gutter-tablet: 12px;
+  --container-gutter-desktop: 12px;
+
+  --grid-column-count: 12;
+  --grid-baseline: 16px;
+
+  --page-width: 1800px;
+  --page-limit: calc(var(--page-width) + (var(--container-gutter-desktop) * 2));
+
+  --bp-min-1800: 1800px;
+  --bp-min-1440: 1440px;
+  --bp-min-1280: 1280px;
+  --bp-min-1200: 1200px;
+  --bp-min-1080: 1080px;
+  --bp-min-1024: 1024px;
+  --bp-min-960: 960px;
+  --bp-min-840: 840px;
+  --bp-min-768: 768px;
+  --bp-min-720: 720px;
+  --bp-min-640: 640px;
+  --bp-min-600: 600px;
+  --bp-min-560: 560px;
+  --bp-min-540: 540px;
+  --bp-min-480: 480px;
+  --bp-min-420: 420px;
+  --bp-min-375: 375px;
+  --bp-min-360: 360px;
+
+  --bp-max-1280: 1279px;
+  --bp-max-1200: 1199px;
+  --bp-max-1080: 1079px;
+  --bp-max-1024: 1023px;
+  --bp-max-960: 959px;
+  --bp-max-840: 839px;
+  --bp-max-768: 767px;
+  --bp-max-720: 719px;
+  --bp-max-640: 639px;
+  --bp-max-600: 599px;
+  --bp-max-540: 539px;
+  --bp-max-480: 479px;
+  --bp-max-420: 419px;
+  --bp-max-375: 374px;
+  --bp-max-360: 359px;
+
+  --bp-min-mobile: var(--bp-min-420);
+  --bp-min-tablet: var(--bp-min-720);
+  --bp-min-desktop: var(--bp-min-1080);
+
+  --segment-padding-mobile: calc(var(--gutter) * 3);
+  --segment-padding: 200px;
+
+  --vscale-800: 0.975;
+  --vscale-720: 0.95;
+  --vscale-640: 0.925;
+}
+
+/* Tablet typography remapping:
+ * Keeps utility names stable while remapping their physical size tokens.
+ */
+@media (max-width: 1079px) and (min-width: 720px) {
+  :root {
+    --text-xxs-10px: var(--text-xxs);
+    --text-xs-12px: var(--text-xs);
+    --text-sm-14px: var(--text-xs);
+    --text-base-16px: var(--text-sm);
+    --text-lg-18px: var(--text-base);
+    --text-xl-20px: var(--text-lg);
+    --text-2xl-24px: var(--text-2xl);
+    --text-3xl-30px: var(--text-3xl);
+    --text-4xl-36px: var(--text-3xl);
+    --text-5xl-48px: var(--text-4xl);
+    --text-6xl-60px: var(--text-5xl);
+    --text-7xl-72px: var(--text-6xl);
+    --text-8xl-80px: var(--text-7xl);
+  }
+}
+
+/* Mobile typography remapping:
+ * Keeps utility names stable while remapping their physical size tokens.
+ */
+@media (max-width: 719px) {
+  :root {
+    --text-xxs-10px: var(--text-xxs);
+    --text-xs-12px: var(--text-xxs);
+    --text-sm-14px: var(--text-xs);
+    --text-base-16px: var(--text-xs);
+    --text-lg-18px: var(--text-sm);
+    --text-xl-20px: var(--text-base);
+    --text-2xl-24px: var(--text-xl);
+    --text-3xl-30px: var(--text-xl);
+    --text-4xl-36px: var(--text-2xl);
+    --text-5xl-48px: var(--text-4xl);
+    --text-6xl-60px: var(--text-5xl);
+    --text-7xl-72px: var(--text-5xl);
+    --text-8xl-80px: var(--text-6xl);
+  }
+}
