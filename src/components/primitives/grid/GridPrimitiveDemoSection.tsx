@@ -28,16 +28,16 @@ export function GridPrimitiveDemoSection() {
             <header className="space-y-3 border-b border-bunker-100/70 pb-4">
               <p className="font-sans text-xs font-semibold uppercase tracking-[0.16em] text-bunker-425">Grid Primitive Demo</p>
               <h2 className="font-display text-3xl font-semibold leading-[1.2] text-bunker-800 lg:text-4xl">
-                Minimal responsive span primitive
+                Token-driven row and span primitive
               </h2>
               <p className="max-w-3xl font-sans text-base leading-[1.5] text-bunker-550">
-                <code>Grid</code> only sets width span per breakpoint against <code>--grid-column-count</code>. Place Grid items inside a flex row.
+                <code>Grid</code> supports both row wrappers and column spans with token-based gutter math from <code>tokens.css</code>.
               </p>
             </header>
 
             <div className="space-y-3 rounded-[10px] border border-havelock-blue-150/70 bg-havelock-blue-25/45 p-3">
               <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-havelock-blue-550">LTR row | mobile=12 tablet=6 desktop=4</p>
-              <div className="flex flex-wrap">
+              <Grid flow="row" direction="ltr">
                 <Grid mobile={12} tablet={6} desktop={4} direction="ltr">
                   <DemoTile title="A" detail="Spans 4 columns at desktop." />
                 </Grid>
@@ -47,12 +47,12 @@ export function GridPrimitiveDemoSection() {
                 <Grid mobile={12} tablet={6} desktop={4} direction="ltr">
                   <DemoTile title="C" detail="Spans full width on mobile." />
                 </Grid>
-              </div>
+              </Grid>
             </div>
 
             <div className="space-y-3 rounded-[10px] border border-eucalyptus-150/70 bg-eucalyptus-25/40 p-3">
               <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-eucalyptus-550">RTL row | same spans</p>
-              <div dir="rtl" className="flex flex-wrap">
+              <Grid flow="row" direction="rtl">
                 <Grid mobile={12} tablet={6} desktop={4} direction="rtl">
                   <DemoTile title="One" detail="RTL content direction enabled." className="bg-eucalyptus-25/55" />
                 </Grid>
@@ -62,16 +62,16 @@ export function GridPrimitiveDemoSection() {
                 <Grid mobile={12} tablet={6} desktop={4} direction="rtl">
                   <DemoTile title="Three" detail="No extra container/item API required." className="bg-anzac-25/55" />
                 </Grid>
-              </div>
+              </Grid>
             </div>
 
             <div className="rounded-[10px] border border-bunker-100/70 bg-alabaster-25 p-5">
               <p className="font-sans text-xs font-semibold uppercase tracking-[0.16em] text-bunker-425">Usage</p>
-              <pre className="mt-3 overflow-x-auto whitespace-pre font-mono text-xs leading-[1.6] text-bunker-675">{`<div className="flex flex-wrap">
+              <pre className="mt-3 overflow-x-auto whitespace-pre font-mono text-xs leading-[1.6] text-bunker-675">{`<Grid flow="row" direction="ltr">
   <Grid mobile={12} tablet={6} desktop={4} direction="ltr">
     ...
   </Grid>
-</div>`}</pre>
+</Grid>`}</pre>
             </div>
           </div>
         </Container>

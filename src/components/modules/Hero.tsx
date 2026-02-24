@@ -1,41 +1,41 @@
 import { homeHero } from "@/data/home";
 import { Container } from "@/components/primitives/container/Container";
-import { Segment } from "@/components/primitives/segment/Segment";
+import { Grid } from "@/components/primitives/grid/Grid";
 
 export function Hero() {
   const hero = homeHero;
 
   return (
-    <section data-section-id="YHDHg" className="relative overflow-hidden bg-bunker-950">
-      <div className="absolute inset-0 checkerboard" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_98%,#000000b5_0%,#00000066_22%,transparent_55%)]" />
+    <section data-section-id="YHDHg" className="relative overflow-hidden bg-(--bunker-950)">
+      <div aria-hidden className="absolute inset-0 bg-(--gallery-675)" />
 
-      <Segment>
-        <Container className="relative min-h-[760px] md:min-h-[960px] lg:h-[1169px] lg:min-h-0">
-        <div className="flex h-full flex-col justify-end gap-10 lg:pt-24">
-          <div className="w-full space-y-5 lg:max-w-[998px] lg:space-y-5">
-            <div className="flex flex-wrap items-center gap-4">
-              <div className="inline-flex h-7 items-center rounded-[9999px] bg-alabaster-25/4 px-3 font-sans text-xs font-medium leading-[1.3333333333] tracking-[0.5px] text-alabaster-25">
+      <Container className="relative z-10 flex min-h-[calc(100vh-76px)] flex-col px-10 pb-10 pt-[76px]">
+        <div className="flex flex-1 flex-col justify-end pt-24">
+          <Grid mobile={12} tablet={12} desktop={7} className="max-w-[998px] pt-11">
+            <div className="flex h-7 items-center gap-4">
+              <span className="inline-flex h-7 items-center gap-2 rounded-full border border-(--gallery-100) bg-[rgba(245,245,246,0.04)] px-2.5 font-sans text-xs font-medium uppercase leading-4 tracking-[0.5px] text-(--alabaster-25)">
+                <span
+                  aria-hidden
+                  className="inline-block h-4 w-4 rounded-full border border-(--gallery-100) bg-[rgba(245,245,246,0.04)]"
+                />
                 {hero.stats[0].label}
-              </div>
-              <span aria-hidden className="h-[6px] w-[6px] rounded-full bg-gallery-150" />
-              <span className="font-sans text-xs font-medium leading-[1.3333333333] tracking-[0.5px] text-alabaster-25">
+              </span>
+              <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-(--gallery-100)" />
+              <span className="font-sans text-xs font-medium uppercase leading-4 tracking-[0.5px] text-(--alabaster-25)">
                 {hero.stats[1].label}
               </span>
             </div>
-
-            <div className="space-y-0 pt-11">
-              <h1 className="font-display text-6xl font-light leading-[1.1333333333] tracking-[-0.6px] text-alabaster-25">
+            <div className="space-y-0 pt-5">
+              <h1 className="font-display text-(length:--text-6xl-60px) font-light leading-[68px] tracking-[-0.6px] text-(--alabaster-25)">
                 {hero.heading}
               </h1>
-              <p className="font-display text-6xl font-light leading-[1.1333333333] tracking-[-0.6px] text-alabaster-150">
+              <p className="font-display text-(length:--text-6xl-60px) font-light leading-[68px] tracking-[-0.6px] text-(--alabaster-150)">
                 {hero.subheading}
               </p>
             </div>
-          </div>
+          </Grid>
         </div>
-        </Container>
-      </Segment>
+      </Container>
     </section>
   );
 }

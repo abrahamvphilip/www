@@ -1,21 +1,24 @@
-import { homeIntroStrip } from "@/data/home";
 import { Container } from "@/components/primitives/container/Container";
-import { Segment } from "@/components/primitives/segment/Segment";
+import { Grid } from "@/components/primitives/grid/Grid";
 
 export function IntroStrip() {
-  const { copy } = homeIntroStrip;
-
   return (
-    <section data-section-id="D2Lup" className="bg-bunker-950">
-      <Segment>
-        <Container className="lg:h-[624px]">
-          <div className="mx-auto w-full max-w-[1222px] px-0 lg:px-[289px]">
-            <p className="whitespace-pre-line text-center font-sans text-4xl font-normal leading-[1.1111111111] tracking-[-0.36px] text-bunker-800">
-              {copy}
-            </p>
-          </div>
-        </Container>
-      </Segment>
+    <section data-section-id="D2Lup">
+      <Container className="px-10 pb-36 pt-[120px]">
+        <div className="flex w-full justify-center py-20">
+          <Grid mobile={12} tablet={10} desktop={8} className="max-w-[1142px]">
+            <div className="text-center font-sans text-[36px] font-normal leading-[40px] tracking-[-0.36px]">
+              <p className="mb-0 text-(--bunker-800)">
+                We design,build, and deploy the systems
+              </p>
+              that turn research into enterprise-grade AI.
+              <br />
+              <br />
+              <p className="mb-0 text-(--bunker-800)">From models to infrastructure, we close <br /> the gap between pilot and production.</p>
+            </div>
+          </Grid>
+        </div>
+      </Container>
     </section>
   );
 }

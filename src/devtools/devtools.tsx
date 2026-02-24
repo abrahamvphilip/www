@@ -18,5 +18,5 @@ export function Devtools() {
     }
   }, [keys, setVisible]);
 
-  return <GridOverlay button={isVisible} columns={12} baseline={8} />;
+  return <GridOverlay button={isVisible} />;
 }

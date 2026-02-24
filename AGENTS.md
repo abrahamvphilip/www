@@ -12,6 +12,7 @@ This file is the canonical folder tree and structure contract for this repo.
 ├── .gitignore
 ├── AGENTS.md
 ├── README.md
+├── rules.md
 ├── bun.lock
 ├── eslint.config.mjs
 ├── next-env.d.ts
@@ -104,6 +105,7 @@ This file is the canonical folder tree and structure contract for this repo.
 - `src/components/ui` contains reusable primitives and presentational building blocks.
 - `src/components/modules` contains composed website sections built from `ui` primitives.
 - `src/data/<page>.ts` contains page data/content objects (currently `src/data/home.ts`).
+- `rules.md` contains the canonical implementation rules for pixel-perfect Figma-to-code work.
 - Do not add `src/types` unless explicitly reintroduced.
 
 ## Maintenance Rule

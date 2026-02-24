@@ -86,11 +86,11 @@ function gridUsageSnippet(state: Record<string, unknown>) {
   const tablet = parseSpan(state.tablet, 6);
   const desktop = parseSpan(state.desktop, 4);
 
-  return `<div className="flex flex-wrap"${direction === "rtl" ? ' dir="rtl"' : ""}>
+  return `<Grid flow="row" direction="${direction}">
   <Grid as="${as}" direction="${direction}" mobile={${mobile}} tablet={${tablet}} desktop={${desktop}}>
     ...
   </Grid>
-</div>`;
+</Grid>`;
 }
 
 function containerUsageSnippet(state: Record<string, unknown>) {
@@ -116,7 +116,7 @@ export const componentRegistry: ComponentDocEntry[] = [
     title: "Grid",
     importPath: "@/components/primitives/grid/Grid",
     sourcePath: docsSourcePaths.grid,
-    description: "Minimal token-based span primitive. Set mobile/tablet/desktop widths against --grid-column-count.",
+    description: "Token-based row/column primitive with responsive span math, gutter handling, and optional offsets.",
     props: [
       {
         name: "as",
@@ -127,11 +127,19 @@ export const componentRegistry: ComponentDocEntry[] = [
         control: { kind: "elementType", options: ELEMENT_TAGS },
       },
       {
+        name: "flow",
+        type: '"row" | "col"',
+        required: false,
+        defaultValue: '"col"',
+        description: "Use row mode for grid wrappers and col mode for spanned items.",
+        control: { kind: "select", options: ["col", "row"] },
+      },
+      {
         name: "direction",
         type: '"ltr" | "rtl"',
         required: false,
         defaultValue: '"ltr"',
-        description: "Directional flow for content and optional parent row usage.",
+        description: "Controls row direction (row vs row-reverse) and content direction.",
         control: { kind: "select", options: GRID_DIRECTION_OPTIONS },
       },
       {
@@ -237,13 +245,13 @@ export const componentRegistry: ComponentDocEntry[] = [
 
           <div className="rounded-[10px] border border-purple-heart-150/70 bg-purple-heart-25/35 p-2.5">
             <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.08em] text-purple-heart-550">Flex row + Grid items</p>
-            <div dir={direction} className="flex flex-wrap">
+            <Grid flow="row" direction={direction}>
               {renderGridCards(children, as, direction, mobile, tablet, desktop)}
-            </div>
+            </Grid>
           </div>
 
           <p className="font-sans text-xs leading-[1.55] text-bunker-550">
-            Width formula: <code>width = (span / --grid-column-count) * 100%</code>.
+            Width formula: <code>width = (span / --grid-column-count) * 100%</code>, with token gutter padding per column.
           </p>
         </div>,
       );

@@ -42,7 +42,7 @@ export const homeForge = {
     title: "The integrated AI stack",
     subtitle: "Build the best models, not wrestle infrastucture",
     description:
-      "Forge is the most reliable, optimized AI cloud—unlocking AI infrastructure at scale with no wait times. Deploy high-performance GPUs in minutes with no vendor lock-ins, zero complexity, and complete price & performance transparency.",
+      "Forge is the most reliable, optimized AI cloud—unlocking AI infrastructure at scale with no wait times.\n\nDeploy high-performance GPUs in minutes with no vendor lock-ins, zero complexity, and complete price & performance transparency.",
   },
   ctas: ["Learn More", "Access the Platform", "Learn More"],
   deckTitle: "Curated App Marketplace with Kubernetes",

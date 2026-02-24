@@ -31,9 +31,7 @@ export function Container({ as, className, children }: ContainerProps) {
   const style: ContainerStyle = {
     flexGrow: 1,
     marginInline: "auto",
-    paddingInline: "var(--container-gutter-current)",
-    maxWidth: "calc(var(--page-width) + (var(--container-gutter-current) * 2))",
-    "--container-gutter-current": getCurrentGutterToken(breakpoint),
+    maxWidth: "var(--page-limit)",
   };
 
   return (

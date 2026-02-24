@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { type CSSProperties, useEffect, useRef, useState } from "react";
 
+import { useTokenViewport } from "@/components/primitives/_shared/useTokenViewport";
 import { useKeyDown } from "./hooks/useKeyDown";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 
@@ -16,12 +17,29 @@ interface GridOverlayProps {
   button?: boolean;
 }
 
+type GridOverlayStyle = CSSProperties & Record<`--${string}`, string | number | undefined>;
+
+function getCurrentGutterToken(breakpoint: "mobile" | "tablet" | "desktop") {
+  if (breakpoint === "desktop") {
+    return "var(--container-gutter-desktop)";
+  }
+
+  if (breakpoint === "tablet") {
+    return "var(--container-gutter-tablet)";
+  }
+
+  return "var(--container-gutter-mobile)";
+}
+
 export function GridOverlay({
-  columns = 12,
-  baseline = 8,
+  columns,
+  baseline,
   button = false,
 }: GridOverlayProps) {
+  const { breakpoint, width, minMobile } = useTokenViewport();
   const gridOverlayRef = useRef<HTMLDivElement>(null);
+  const [resolvedColumns, setResolvedColumns] = useState(columns ?? 12);
+  const [resolvedBaseline, setResolvedBaseline] = useState(baseline ?? 8);
   const [isHorizontalVisible, setHorizontal] = useLocalStorage(
     LOCAL_STORAGE_KEY_HORIZONTAL,
     false,
@@ -41,14 +59,40 @@ export function GridOverlay({
   };
 
   useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    const rootStyles = getComputedStyle(document.documentElement);
+    const tokenColumns = Number.parseInt(rootStyles.getPropertyValue("--grid-column-count"), 10);
+    const tokenBaseline = Number.parseFloat(rootStyles.getPropertyValue("--grid-baseline"));
+
+    const nextColumns = columns ?? (Number.isFinite(tokenColumns) ? tokenColumns : 12);
+    const nextBaseline = baseline ?? (Number.isFinite(tokenBaseline) ? tokenBaseline : 8);
+
+    setResolvedColumns(nextColumns);
+    setResolvedBaseline(nextBaseline);
+  }, [columns, baseline, width]);
+
+  useEffect(() => {
     if (!gridOverlayRef.current) {
       return;
     }
 
-    gridOverlayRef.current.style.setProperty("--grid-column-count", String(columns));
-    gridOverlayRef.current.style.setProperty("--grid-baseline", `${baseline}px`);
-    gridOverlayRef.current.style.setProperty("--grid-baseline-calc", String(baseline));
-  }, [columns, baseline]);
+    const currentGutterToken = getCurrentGutterToken(breakpoint);
+    const isBelowMinMobile = minMobile !== null && width < minMobile;
+
+    gridOverlayRef.current.style.setProperty("--grid-column-count", String(resolvedColumns));
+    gridOverlayRef.current.style.setProperty("--grid-baseline", `${resolvedBaseline}px`);
+    gridOverlayRef.current.style.setProperty("--grid-baseline-calc", String(resolvedBaseline));
+    gridOverlayRef.current.style.setProperty("--grid-overlay-gutter-current", currentGutterToken);
+    gridOverlayRef.current.style.setProperty(
+      "--grid-overlay-page-limit-current",
+      isBelowMinMobile
+        ? "calc(var(--page-width) + var(--grid-overlay-gutter-current))"
+        : "calc(var(--page-width) + (var(--grid-overlay-gutter-current) * 2))",
+    );
+  }, [breakpoint, minMobile, resolvedBaseline, resolvedColumns, width]);
 
   useEffect(() => {
     if (keys.includes(17) && keys.includes(76)) {
@@ -63,12 +107,17 @@ export function GridOverlay({
   const className = `gridOverlay ${isHorizontalVisible ? "gridOverlayIsHorizontalIsVisible" : ""} ${
     isVerticalVisible ? "gridOverlayIsVerticalVisible" : ""
   }`;
+  const containerStyle: GridOverlayStyle = {
+    width: "min(100%, var(--grid-overlay-page-limit-current, var(--page-limit)))",
+    paddingInline:
+      "var(--grid-overlay-gutter-current, var(--container-gutter-mobile))",
+  };
 
   return (
     <div ref={gridOverlayRef} className={className} aria-hidden={!button}>
-      <div className="gridOverlay__container">
-        <div className="gridOverlay__row" data-columns={columns}>
-          {Array.from({ length: columns }).map((_, index) => (
+      <div className="gridOverlay__container" style={containerStyle}>
+        <div className="gridOverlay__row" data-columns={resolvedColumns}>
+          {Array.from({ length: resolvedColumns }).map((_, index) => (
             <div key={`grid_column_${index}`} className="gridOverlay__column">
               <div className="gridOverlay__visualize" />
             </div>

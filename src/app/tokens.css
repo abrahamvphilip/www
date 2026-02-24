@@ -32,8 +32,8 @@
 	/* Layout foundation tokens (legacy merge) */
 	--gutter: 12px;
 	--container-gutter-mobile: var(--gutter);
-	--container-gutter-tablet: 12px;
-	--container-gutter-desktop: 12px;
+	--container-gutter-tablet: 24px;
+	--container-gutter-desktop: 40px;
 
 	--grid-column-count: 12;
 	--grid-baseline: 16px;
@@ -80,12 +80,12 @@
 	--bp-min-tablet: var(--bp-min-720);
 	--bp-min-desktop: var(--bp-min-1080);
 
-	--segment-padding-mobile: calc(var(--gutter) * 3);
-	--segment-padding: 200px;
+	--segment-padding-mobile: calc(var(--container-gutter-mobile) * 3);
+	--segment-padding: 144px;
 
-	--vscale-800: 0.975;
-	--vscale-720: 0.95;
-	--vscale-640: 0.925;
+	--vscale-800: 0.96;
+	--vscale-720: 0.92;
+	--vscale-640: 0.88;
 
 	/* Raw light palette tokens grouped by family and shade */
 	--alabaster-25: hsl(0 0 98%);
