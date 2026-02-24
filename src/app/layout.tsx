@@ -34,12 +34,19 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const isDarkTheme = process.env.NEXT_PUBLIC_THEME === "dark";
+  const themeMode = isDarkTheme ? "dark" : "light";
+
   return (
-    <html lang="en" className={`${ibmPlexSans.variable} ${ibmPlexMono.variable} ${fraunces.variable}`}>
+    <html
+      lang="en"
+      data-theme={themeMode}
+      className={`${ibmPlexSans.variable} ${ibmPlexMono.variable} ${fraunces.variable}`}
+    >
       <body className="antialiased">
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-[4px] focus:bg-[#18181b] focus:px-3 focus:py-2 focus:text-[#ffffff]"
+          className="visually-hidden-focusable focus-ring left-4 top-4 z-50 rounded-[4px] bg-bunker-800 px-3 py-2 text-alabaster-25"
         >
           Skip to main content
         </a>
