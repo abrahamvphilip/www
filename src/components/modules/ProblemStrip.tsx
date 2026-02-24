@@ -1,5 +1,7 @@
 import { homeProblemStrip } from "@/data/home";
 
+import { Container } from "@/components/primitives/container/Container";
+import { Segment } from "@/components/primitives/segment/Segment";
 import { PlaceholderMedia } from "@/components/ui/PlaceholderMedia";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
@@ -8,7 +10,8 @@ export function ProblemStrip() {
 
   return (
     <section data-section-id="IYsCw" className="overflow-hidden bg-bunker-950 lg:h-[1093px]">
-      <div className="site-shell h-full px-4 pb-20 pt-0 lg:px-10 lg:pb-[120px]">
+      <Segment>
+        <Container className="h-full">
         <div className="grid gap-8 pb-16 pt-10 lg:grid-cols-[565px_565px] lg:justify-between lg:gap-6 lg:pb-16">
           <div className="w-full max-w-[565px]">
             <SectionHeading eyebrow={problem.eyebrow} title={problem.title} subtitle={problem.subtitle} compact />
@@ -28,11 +31,12 @@ export function ProblemStrip() {
         </div>
 
         <div className="pb-10 pt-[52px]">
-          <p className="max-w-[854px] whitespace-pre-line font-sans text-4xl font-normal leading-[1.1666666667] tracking-[-0.48px] text-alabaster-25 lg:text-5xl">
+          <p className="max-w-[854px] whitespace-pre-line font-sans text-5xl font-normal leading-[1.1666666667] tracking-[-0.48px] text-alabaster-25">
             {problem.stat}
           </p>
         </div>
-      </div>
+        </Container>
+      </Segment>
     </section>
   );
 }

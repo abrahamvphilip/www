@@ -19,13 +19,12 @@ export function SectionHeading({
   description,
   inverse = false,
   className,
-  compact = false,
   eyebrowClassName,
   titleClassName,
   subtitleClassName,
   descriptionClassName,
 }: SectionHeadingProps) {
-  const headingSize = compact ? "text-3xl lg:text-4xl" : "text-4xl";
+  const headingSize = "text-4xl";
   const titleTone = inverse ? "text-alabaster-25" : "text-bunker-800";
   const subtitleTone = inverse ? "text-alabaster-150" : "text-bunker-325";
   const eyebrowTone = inverse ? "text-alabaster-150" : "text-bunker-550";

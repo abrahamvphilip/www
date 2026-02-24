@@ -1,5 +1,8 @@
 import { homeForge } from "@/data/home";
 
+import { Container } from "@/components/primitives/container/Container";
+import { Grid } from "@/components/primitives/grid/Grid";
+import { Segment } from "@/components/primitives/segment/Segment";
 import { ButtonChip } from "@/components/ui/ButtonChip";
 import { PlaceholderMedia } from "@/components/ui/PlaceholderMedia";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -31,39 +34,47 @@ export function ForgeSection() {
 
   return (
     <section data-section-id="jAwkA" className="bg-blue-lagoon-800">
-      <div className="site-shell">
-        <div className="grid gap-10 px-4 pb-10 pt-20 lg:h-[1014px] lg:grid-cols-[565px_854px] lg:justify-between lg:gap-3 lg:px-10 lg:pb-10 lg:pt-[120px]">
-          <div className="flex min-h-[854px] flex-col justify-between gap-10">
-            <div className="w-full">
-              <SectionHeading
-                eyebrow={forge.header.eyebrow}
-                title={forge.header.title}
-                subtitle={forge.header.subtitle}
-                description={forge.header.description}
-                className="pt-20"
-                descriptionClassName="text-bunker-675/80"
-              />
-            </div>
+      <Segment>
+        <Container>
+          <div className="pb-10 pt-20 lg:pb-10 lg:pt-[120px]">
+            <div className="flex flex-wrap items-stretch gap-y-10 lg:h-[1014px] lg:gap-y-3">
+              <Grid mobile={12} desktop={5}>
+                <div className="flex min-h-[854px] flex-col justify-between gap-10">
+                  <div className="w-full">
+                    <SectionHeading
+                      eyebrow={forge.header.eyebrow}
+                      title={forge.header.title}
+                      subtitle={forge.header.subtitle}
+                      description={forge.header.description}
+                      className="pt-20"
+                      descriptionClassName="text-bunker-675/80"
+                    />
+                  </div>
 
-            <div className="flex flex-wrap items-center gap-6 pb-16">
-              <ButtonChip label={forge.ctas[0]} href="/forge" badge="2" className="w-[170px]" />
-              <div className="flex h-[38px] w-[216px] items-center">
-                <ButtonChip label={forge.ctas[1]} href="/platform" variant="dark" badge="2" className="w-[170px]" />
-                <span className="h-[38px] w-[6px] bg-transparent" />
-                <ButtonChip label="" href="/platform" variant="dark" badge="2" className="w-[40px] px-0" />
-              </div>
+                  <div className="flex flex-wrap items-center gap-6 pb-16">
+                    <ButtonChip label={forge.ctas[0]} href="/forge" badge="2" className="w-[170px]" />
+                    <div className="flex h-[38px] w-[216px] items-center">
+                      <ButtonChip label={forge.ctas[1]} href="/platform" variant="dark" badge="2" className="w-[170px]" />
+                      <span className="h-[38px] w-[6px] bg-transparent" />
+                      <ButtonChip label="" href="/platform" variant="dark" badge="2" className="w-[40px] px-0" />
+                    </div>
+                  </div>
+                </div>
+              </Grid>
+
+              <Grid mobile={12} desktop={7}>
+                <div className="relative h-[854px] w-full">
+                  <PlaceholderMedia label="forge-diagram" ratio="854 / 854" className="bg-alabaster-25" />
+                  <div className="absolute bottom-[307px] left-[376px] w-[122px] rounded-[2px] bg-bunker-800 px-2 py-1 text-alabaster-25">
+                    <p className="text-xxs leading-[1.25]">{forge.deckLabels[0]}</p>
+                  </div>
+                </div>
+              </Grid>
             </div>
           </div>
+        </Container>
 
-          <div className="relative h-[854px] w-full">
-            <PlaceholderMedia label="forge-diagram" ratio="854 / 854" className="bg-alabaster-25" />
-            <div className="absolute bottom-[307px] left-[376px] w-[122px] rounded-[2px] bg-bunker-800 px-2 py-1 text-alabaster-25">
-              <p className="text-xxs leading-[1.25]">{forge.deckLabels[0]}</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="space-y-[56px] overflow-hidden px-4 pb-[120px] pt-20 lg:h-[880px] lg:px-10">
+        <Container className="space-y-[56px] overflow-hidden pb-[120px] pt-20 lg:h-[880px]">
           <div className="flex items-center justify-between gap-4">
             <p className="font-display text-3xl font-semibold leading-[1.5] text-bunker-950">
               {"///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////"}
@@ -79,8 +90,8 @@ export function ForgeSection() {
               <ForgeFeatureCard title={forge.featureCards[3].title} description={forge.featureCards[3].description} dense />
             </div>
           </div>
-        </div>
-      </div>
+        </Container>
+      </Segment>
     </section>
   );
 }

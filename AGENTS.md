@@ -29,8 +29,18 @@ This file is the canonical folder tree and structure contract for this repo.
 │   │   ├── favicon.ico
 │   │   ├── globals.css
 │   │   ├── layout.tsx
+│   │   ├── o/
+│   │   │   ├── loading.tsx
+│   │   │   └── page.tsx
 │   │   ├── page.tsx
 │   │   └── tokens.css
+│   ├── devtools/
+│   │   ├── devtools.tsx
+│   │   ├── gridOverlay.css
+│   │   ├── gridOverlay.tsx
+│   │   └── hooks/
+│   │       ├── useKeyDown.ts
+│   │       └── useLocalStorage.ts
 │   ├── components/
 │   │   ├── modules/
 │   │   │   ├── BuildingBlocksSection.tsx
@@ -45,6 +55,28 @@ This file is the canonical folder tree and structure contract for this repo.
 │   │   │   ├── NexusSection.tsx
 │   │   │   ├── ProblemStrip.tsx
 │   │   │   └── ResourcesSection.tsx
+│   │   ├── primitives/
+│   │   │   ├── _shared/
+│   │   │   │   └── useTokenViewport.ts
+│   │   │   ├── container/
+│   │   │   │   ├── Container.tsx
+│   │   │   │   └── ContainerPrimitiveDemoSection.tsx
+│   │   │   ├── grid/
+│   │   │   │   ├── Grid.tsx
+│   │   │   │   └── GridPrimitiveDemoSection.tsx
+│   │   │   └── segment/
+│   │   │       ├── Segment.tsx
+│   │   │       └── SegmentPrimitiveDemoSection.tsx
+│   │   ├── docs/
+│   │   │   ├── CodePanel.tsx
+│   │   │   ├── ComponentDocsPage.tsx
+│   │   │   ├── ComponentShowcaseCard.tsx
+│   │   │   ├── PropTable.tsx
+│   │   │   ├── controlState.ts
+│   │   │   ├── loadSourceFiles.ts
+│   │   │   ├── registry.tsx
+│   │   │   ├── sourcePaths.ts
+│   │   │   └── types.ts
 │   │   └── ui/
 │   │       ├── BrandMark.tsx
 │   │       ├── ButtonChip.tsx
@@ -62,6 +94,13 @@ This file is the canonical folder tree and structure contract for this repo.
 
 ## Folder Rules
 
+- `src/devtools` contains local-only developer overlays and keyboard tooling.
+- `src/app/o` contains the dev-only component observatory route.
+- `src/components/docs` contains local docs/playground infrastructure used by `/o`.
+- `src/components/primitives/_shared` contains shared token viewport/runtime helpers used by layout primitives.
+- `src/components/primitives/container` contains the token-driven container wrapper primitive and its demo.
+- `src/components/primitives/segment` contains the token-driven section-spacing wrapper primitive and its demo.
+- `src/components/primitives/grid` contains the reusable token-driven grid primitive and its usage demo.
 - `src/components/ui` contains reusable primitives and presentational building blocks.
 - `src/components/modules` contains composed website sections built from `ui` primitives.
 - `src/data/<page>.ts` contains page data/content objects (currently `src/data/home.ts`).

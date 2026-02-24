@@ -1,5 +1,7 @@
 import { homeCta } from "@/data/home";
 
+import { Container } from "@/components/primitives/container/Container";
+import { Segment } from "@/components/primitives/segment/Segment";
 import { ButtonChip } from "@/components/ui/ButtonChip";
 
 export function CtaSection() {
@@ -7,10 +9,11 @@ export function CtaSection() {
 
   return (
     <section data-section-id="QEonC" className="bg-bunker-950">
-      <div className="site-shell flex min-h-[700px] items-center justify-center px-4 py-16 lg:h-[900px] lg:min-h-0 lg:px-10 lg:py-[200px]">
+      <Segment>
+        <Container className="flex min-h-[700px] items-center justify-center lg:h-[900px] lg:min-h-0">
         <div className="flex w-full max-w-[854px] flex-col items-center gap-5 py-10 text-center lg:py-16">
           <p className="font-sans text-xs font-medium leading-[1.3333333333] tracking-[0.5px] text-bunker-550">{cta.header.eyebrow}</p>
-          <h2 className="whitespace-pre-line font-sans text-3xl font-normal leading-[1.1111111111] tracking-[-0.36px] text-alabaster-25 lg:text-4xl">
+          <h2 className="whitespace-pre-line font-sans text-4xl font-normal leading-[1.1111111111] tracking-[-0.36px] text-alabaster-25">
             {cta.header.title}
           </h2>
           <p className="max-w-[560px] font-sans text-base font-normal leading-[1.5] text-alabaster-25">{cta.body}</p>
@@ -20,7 +23,8 @@ export function CtaSection() {
             <ButtonChip href="/contact" label={cta.buttons[1]} badge="2" variant="light" className="flex-1" />
           </div>
         </div>
-      </div>
+        </Container>
+      </Segment>
     </section>
   );
 }

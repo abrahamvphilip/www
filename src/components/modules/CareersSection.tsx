@@ -1,5 +1,7 @@
 import { homeCareers } from "@/data/home";
 
+import { Container } from "@/components/primitives/container/Container";
+import { Segment } from "@/components/primitives/segment/Segment";
 import { ButtonChip } from "@/components/ui/ButtonChip";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
@@ -7,7 +9,7 @@ function OpeningCard({ title, engagement, location }: (typeof homeCareers.openin
   return (
     <article className="flex w-[421px] shrink-0 flex-col gap-4">
       <div className="flex items-center gap-6">
-        <h3 className="font-sans text-base font-normal leading-[1.5] text-bunker-800">{title}</h3>
+        <h3 className="font-sans text-base font-medium leading-[1.5] text-bunker-800">{title}</h3>
         <span className="h-px w-10 bg-bunker-800" />
         <span aria-hidden className="text-base text-bunker-800">
           ↗
@@ -26,7 +28,8 @@ export function CareersSection() {
 
   return (
     <section data-section-id="gwgPH" className="bg-bunker-950">
-      <div className="site-shell space-y-[56px] px-4 py-[96px] lg:px-10 lg:pb-[200px] lg:pt-[144px]">
+      <Segment>
+        <Container className="space-y-[56px]">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading eyebrow={careers.header.eyebrow} title={careers.header.title} subtitle={careers.header.subtitle} />
 
@@ -38,7 +41,8 @@ export function CareersSection() {
             <OpeningCard key={`${opening.title}-${index}`} title={opening.title} engagement={opening.engagement} location={opening.location} />
           ))}
         </div>
-      </div>
+        </Container>
+      </Segment>
     </section>
   );
 }

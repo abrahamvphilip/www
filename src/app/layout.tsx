@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Fraunces, IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
 
+import { Devtools } from "@/devtools/devtools";
+
 import "./globals.css";
 
 const ibmPlexSans = IBM_Plex_Sans({
@@ -26,7 +28,8 @@ const fraunces = Fraunces({
 
 export const metadata: Metadata = {
   title: "aion | AI Infrastructure Research Lab",
-  description: "Pixel-perfect implementation from locked Figma MCP design source.",
+  description:
+    "Pixel-perfect implementation from locked Figma MCP design source.",
 };
 
 export default function RootLayout({
@@ -43,14 +46,9 @@ export default function RootLayout({
       data-theme={themeMode}
       className={`${ibmPlexSans.variable} ${ibmPlexMono.variable} ${fraunces.variable}`}
     >
-      <body className="antialiased">
-        <a
-          href="#main-content"
-          className="visually-hidden-focusable focus-ring left-4 top-4 z-50 rounded-[4px] bg-bunker-800 px-3 py-2 text-alabaster-25"
-        >
-          Skip to main content
-        </a>
+      <body className="font-sans antialiased">
         {children}
+        {process.env.NODE_ENV === "development" ? <Devtools /> : null}
       </body>
     </html>
   );

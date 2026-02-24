@@ -2,6 +2,8 @@ import Link from "next/link";
 
 import { homeFooter } from "@/data/home";
 
+import { Container } from "@/components/primitives/container/Container";
+import { Segment } from "@/components/primitives/segment/Segment";
 import { BrandMark } from "@/components/ui/BrandMark";
 import { FooterArcBackdrop } from "@/components/ui/FooterArcBackdrop";
 import { PlaceholderMedia } from "@/components/ui/PlaceholderMedia";
@@ -11,7 +13,8 @@ export function Footer() {
 
   return (
     <footer data-section-id="3rLbN" className="relative overflow-hidden bg-bunker-950">
-      <div className="site-shell relative z-10 flex min-h-[920px] flex-col gap-[56px] px-4 pb-0 pt-[96px] lg:h-[1056px] lg:px-10 lg:pt-[144px]">
+      <Segment>
+        <Container className="relative z-10 flex min-h-[920px] flex-col gap-[56px] lg:h-[1056px]">
         <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between">
           <div className="w-full max-w-[421px] space-y-10">
             <h3 className="font-sans text-3xl font-normal leading-[1.2] tracking-[-0.3px] text-bunker-800">{footer.title}</h3>
@@ -74,7 +77,8 @@ export function Footer() {
             ))}
           </div>
         </div>
-      </div>
+        </Container>
+      </Segment>
 
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[600px]">
         <FooterArcBackdrop className="h-full w-full" />

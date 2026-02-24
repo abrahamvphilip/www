@@ -1,4 +1,6 @@
 import { homeHero } from "@/data/home";
+import { Container } from "@/components/primitives/container/Container";
+import { Segment } from "@/components/primitives/segment/Segment";
 
 export function Hero() {
   const hero = homeHero;
@@ -8,7 +10,8 @@ export function Hero() {
       <div className="absolute inset-0 checkerboard" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_98%,#000000b5_0%,#00000066_22%,transparent_55%)]" />
 
-      <div className="site-shell relative min-h-[760px] px-4 pb-10 pt-10 md:min-h-[960px] lg:h-[1169px] lg:min-h-0 lg:px-10 lg:pb-10 lg:pt-[76px]">
+      <Segment>
+        <Container className="relative min-h-[760px] md:min-h-[960px] lg:h-[1169px] lg:min-h-0">
         <div className="flex h-full flex-col justify-end gap-10 lg:pt-24">
           <div className="w-full space-y-5 lg:max-w-[998px] lg:space-y-5">
             <div className="flex flex-wrap items-center gap-4">
@@ -22,16 +25,17 @@ export function Hero() {
             </div>
 
             <div className="space-y-0 pt-11">
-              <h1 className="font-display text-4xl font-light leading-[1.1333333333] tracking-[-0.6px] text-alabaster-25 md:text-5xl lg:text-6xl">
+              <h1 className="font-display text-6xl font-light leading-[1.1333333333] tracking-[-0.6px] text-alabaster-25">
                 {hero.heading}
               </h1>
-              <p className="font-display text-4xl font-light leading-[1.1333333333] tracking-[-0.6px] text-alabaster-150 md:text-5xl lg:text-6xl">
+              <p className="font-display text-6xl font-light leading-[1.1333333333] tracking-[-0.6px] text-alabaster-150">
                 {hero.subheading}
               </p>
             </div>
           </div>
         </div>
-      </div>
+        </Container>
+      </Segment>
     </section>
   );
 }

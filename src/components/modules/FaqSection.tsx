@@ -1,4 +1,6 @@
 import { homeFaq } from "@/data/home";
+import { Container } from "@/components/primitives/container/Container";
+import { Segment } from "@/components/primitives/segment/Segment";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export function FaqSection() {
@@ -13,7 +15,8 @@ export function FaqSection() {
 
   return (
     <section data-section-id="p8x5I" className="overflow-hidden bg-bunker-950 lg:h-[1640px]">
-      <div className="site-shell space-y-[56px] px-4 py-[96px] lg:px-[184px] lg:py-[144px]">
+      <Segment>
+        <Container className="space-y-[56px] lg:px-[184px]">
         <SectionHeading eyebrow={faq.header.eyebrow} title={faq.header.title} subtitle={faq.header.subtitle} />
 
         <div className="space-y-[56px] pb-20">
@@ -43,7 +46,8 @@ export function FaqSection() {
             </div>
           ))}
         </div>
-      </div>
+        </Container>
+      </Segment>
     </section>
   );
 }

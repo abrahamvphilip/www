@@ -1,5 +1,7 @@
 import { homeNexus } from "@/data/home";
 
+import { Container } from "@/components/primitives/container/Container";
+import { Segment } from "@/components/primitives/segment/Segment";
 import { ButtonChip } from "@/components/ui/ButtonChip";
 import { PlaceholderMedia } from "@/components/ui/PlaceholderMedia";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -31,8 +33,9 @@ export function NexusSection() {
 
   return (
     <section data-section-id="X6Q8j" className="overflow-hidden bg-chateau-green-800 lg:h-[1974px]">
-      <div className="site-shell">
-        <div className="grid gap-10 px-4 pb-10 pt-20 lg:h-[1014px] lg:grid-cols-[854px_854px] lg:justify-between lg:gap-3 lg:px-10 lg:pb-10 lg:pt-[120px]">
+      <Segment>
+        <Container>
+          <div className="grid gap-10 pb-10 pt-20 lg:h-[1014px] lg:grid-cols-[854px_854px] lg:justify-between lg:gap-3 lg:pb-10 lg:pt-[120px]">
           <div className="relative h-[854px] w-full">
             <PlaceholderMedia label="nexus-diagram" ratio="854 / 854" className="bg-alabaster-25" />
             <div className="absolute left-[194px] top-[328px] w-[113px] rounded-[2px] bg-alabaster-25 px-2 py-1 text-bunker-800">
@@ -65,8 +68,9 @@ export function NexusSection() {
             </div>
           </div>
         </div>
+        </Container>
 
-        <div className="space-y-[56px] overflow-hidden px-4 pb-[200px] pt-0 lg:h-[960px] lg:px-10">
+        <Container className="space-y-[56px] overflow-hidden pb-[200px] pt-0 lg:h-[960px]">
           <div className="flex items-center justify-between gap-4">
             <p className="font-display text-3xl font-semibold leading-[1.5] text-bunker-950">
               {"///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////"}
@@ -82,8 +86,8 @@ export function NexusSection() {
               <NexusFeatureCard title={nexus.featureCards[3].title} description={nexus.featureCards[3].description} dense />
             </div>
           </div>
-        </div>
-      </div>
+        </Container>
+      </Segment>
     </section>
   );
 }

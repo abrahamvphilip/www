@@ -1,5 +1,7 @@
 import { homeResources } from "@/data/home";
 
+import { Container } from "@/components/primitives/container/Container";
+import { Segment } from "@/components/primitives/segment/Segment";
 import { ButtonChip } from "@/components/ui/ButtonChip";
 import { PlaceholderMedia } from "@/components/ui/PlaceholderMedia";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -23,7 +25,8 @@ export function ResourcesSection() {
 
   return (
     <section data-section-id="atC3C" className="overflow-hidden bg-bunker-950 lg:h-[1261px]">
-      <div className="site-shell space-y-[56px] px-4 py-[56px] lg:px-10 lg:pb-[144px]">
+      <Segment>
+        <Container className="space-y-[56px]">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading eyebrow={resources.header.eyebrow} title={resources.header.title} subtitle={resources.header.subtitle} />
 
@@ -52,7 +55,8 @@ export function ResourcesSection() {
             <ResourceCard key={`${card.readTime}-${index}`} card={card} index={index} />
           ))}
         </div>
-      </div>
+        </Container>
+      </Segment>
     </section>
   );
 }

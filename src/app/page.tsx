@@ -4,6 +4,7 @@ import { CtaSection } from "@/components/modules/CtaSection";
 import { FaqSection } from "@/components/modules/FaqSection";
 import { Footer } from "@/components/modules/Footer";
 import { ForgeSection } from "@/components/modules/ForgeSection";
+import { GridPrimitiveDemoSection } from "@/components/primitives/grid/GridPrimitiveDemoSection";
 import { Hero } from "@/components/modules/Hero";
 import { IntroStrip } from "@/components/modules/IntroStrip";
 import { Navbar } from "@/components/modules/Navbar";
@@ -17,6 +18,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <IntroStrip />
+      <GridPrimitiveDemoSection />
       <ProblemStrip />
       <ForgeSection />
       <NexusSection />
