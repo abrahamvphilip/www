@@ -45,8 +45,8 @@ This file is the canonical folder tree and structure contract for this repo.
 │   ├── components/
 │   │   ├── modules/
 │   │   │   ├── buildingBlocksSection.tsx
-│   │   │   ├── careersSection.tsx
-│   │   │   ├── ctaSection.tsx
+│   │   │   ├── careers.tsx
+│   │   │   ├── pageCta.tsx
 │   │   │   ├── faqSection.tsx
 │   │   │   ├── footer.tsx
 │   │   │   ├── forge.tsx
@@ -55,7 +55,7 @@ This file is the canonical folder tree and structure contract for this repo.
 │   │   │   ├── navbar.tsx
 │   │   │   ├── nexusSection.tsx
 │   │   │   ├── problemStrip.tsx
-│   │   │   └── resourcesSection.tsx
+│   │   │   └── blogs.tsx
 │   │   ├── primitives/
 │   │   │   ├── _shared/
 │   │   │   │   └── useTokenViewport.ts

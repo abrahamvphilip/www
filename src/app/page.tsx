@@ -1,6 +1,6 @@
 import { BuildingBlocksSection } from "@/components/modules/buildingBlocksSection";
-import { CareersSection } from "@/components/modules/careersSection";
-import { CtaSection } from "@/components/modules/ctaSection";
+import { Careers } from "@/components/modules/careers";
+import { PageCta } from "@/components/modules/pageCta";
 import { Faq } from "@/components/modules/faq";
 import { Footer } from "@/components/modules/footer";
 import { Forge } from "@/components/modules/forge";
@@ -9,7 +9,7 @@ import { IntroStrip } from "@/components/modules/introStrip";
 import { Navbar } from "@/components/modules/navbar";
 import { Nexus } from "@/components/modules/nexus";
 import { ProblemStrip } from "@/components/modules/problemStrip";
-import { ResourcesSection } from "@/components/modules/resourcesSection";
+import { Blogs } from "@/components/modules/blogs";
 
 export default function Home() {
 	return (
@@ -24,10 +24,10 @@ export default function Home() {
 			<Forge />
 			<Nexus />
 			<BuildingBlocksSection />
-			<CareersSection />
-			<ResourcesSection />
+			<Careers />
+			<Blogs />
 			<Faq />
-			<CtaSection />
+			<PageCta />
 			<Footer />
 		</main>
 	);
