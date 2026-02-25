@@ -32,6 +32,7 @@ export function Container({ as, className, children }: ContainerProps) {
     flexGrow: 1,
     marginInline: "auto",
     maxWidth: "var(--page-limit)",
+    paddingInline: getCurrentGutterToken(breakpoint),
   };
 
   return (

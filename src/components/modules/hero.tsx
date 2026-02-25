@@ -38,7 +38,7 @@ export function Hero() {
 							<h1 className="font-display text-(length:--text-6xl-60px) font-light leading-[68px] tracking-[-0.6px] text-(--alabaster-25)">
 								{hero.heading}
 							</h1>
-							<p className="font-display text-(length:--text-6xl-60px) font-light leading-[68px] tracking-[-0.6px] text-(--alabaster-150)">
+							<p className="font-display text-(length:--text-6xl-60px) font-light leading-[68px] tracking-[-0.6px] text-(--bunker-325)">
 								{hero.subheading}
 							</p>
 						</div>

@@ -42,6 +42,14 @@ let snapshot: TokenViewportSnapshot = {
   minDesktop: null,
   pageLimit: null,
 };
+const serverSnapshot: TokenViewportSnapshot = Object.freeze({
+  width: 0,
+  breakpoint: "mobile",
+  minMobile: null,
+  minTablet: null,
+  minDesktop: null,
+  pageLimit: null,
+});
 
 const subscribers = new Set<() => void>();
 const warnedMessages = new Set<string>();
@@ -174,14 +182,7 @@ function getSnapshot() {
 }
 
 function getServerSnapshot(): TokenViewportSnapshot {
-  return {
-    width: 0,
-    breakpoint: "mobile",
-    minMobile: null,
-    minTablet: null,
-    minDesktop: null,
-    pageLimit: null,
-  };
+  return serverSnapshot;
 }
 
 export function useTokenViewport() {

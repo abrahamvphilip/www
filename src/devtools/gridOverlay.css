@@ -1,4 +1,6 @@
 .gridOverlay {
+  --grid-overlay-column-color: rgb(9 0 255 / 10%);
+
   position: fixed;
   inset: 0;
   z-index: 10000;
@@ -65,11 +67,11 @@
 }
 
 .gridOverlay__visualize::before {
-  background-color: color-mix(in srgb, var(--alabaster-25) 10%, transparent);
+  background-color: var(--grid-overlay-column-color);
 }
 
 .gridOverlay__visualize::after {
-  background-color: color-mix(in srgb, var(--bunker-950) 8%, transparent);
+  background-color: transparent;
 }
 
 .gridOverlay__button {

@@ -205,6 +205,28 @@ If text wraps differently, fix width/line-breaks first. Do not rewrite copy.
 
 ---
 
+## Grid Offset Rules (FAQ Parity)
+
+Use these rules when aligning `Grid` columns to Figma guides:
+
+1. `offsetLeft` is the structural offset.
+   - It shifts a column by `N * (column width + gutter)`.
+   - Use it when the column box itself should land on the target grid track.
+2. `offsetLeftAlt` is the content-edge offset.
+   - It starts from the same `N * (column width + gutter)` math as `offsetLeft`.
+   - Then it subtracts half gutter (`gutter / 2`) so inner text/content aligns to the guide, not the padded column shell.
+3. Use `offsetLeftAlt` for parity cases like FAQ where the visual anchor is text edge alignment and plain `offsetLeft` leaves a half-gutter drift.
+4. If both props are passed, `offsetLeft` takes precedence. Never rely on both simultaneously for layout intent.
+5. Pixel-perfect process for split sections:
+   - first place the column with `offsetLeft` or `offsetLeftAlt`
+   - then apply small local half-gutter micro-adjustments only when Figma still requires it (example: `-pl` / `-ml` token-based tweaks)
+
+Outcome from FAQ implementation:
+- `offsetLeftAlt` produced tighter vertical guide alignment for heading/group labels versus the adjacent question column.
+- This reduced the recurring off-by-half-gutter mismatch and improved desktop parity with the design comp.
+
+---
+
 ## QA Checklist (Required)
 
 1. Node ID and copy verified against Figma.

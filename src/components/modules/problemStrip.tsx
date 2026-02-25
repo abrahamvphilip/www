@@ -18,7 +18,7 @@ export function ProblemStrip() {
 						</p>
 						<div className="font-display text-[36px] font-light leading-10 tracking-[-0.36px]">
 							<p className="text-(--bunker-800)">{problem.title}</p>
-							<p className="text-(--alabaster-150)">{problem.subtitle}</p>
+							<p className="text-(--bunker-325)">{problem.subtitle}</p>
 						</div>
 					</div>
 

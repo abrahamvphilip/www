@@ -115,7 +115,7 @@ function convertify(offset: GridOffset | undefined, label: string) {
 
 	if (typeof offset === "number") {
 		if (Number.isFinite(offset) && offset >= 0) {
-			return `calc((${offset} / var(--grid-column-count)) * 100%)`;
+			return `calc(${offset} * (((100% - ((var(--grid-column-count) - 1) * var(--grid-gutter-current))) / var(--grid-column-count)) + var(--grid-gutter-current)))`;
 		}
 
 		warnDev(
@@ -133,6 +133,17 @@ function convertify(offset: GridOffset | undefined, label: string) {
 		`[Grid] Invalid ${label} "${offset}". Expected a CSS length or token.`,
 	);
 	return undefined;
+}
+
+function applyOffsetLeftAltAdjustment(
+	offset: GridOffset | undefined,
+	resolvedOffset: string | undefined,
+) {
+	if (typeof offset !== "number" || typeof resolvedOffset === "undefined") {
+		return resolvedOffset;
+	}
+
+	return `calc(${resolvedOffset} - (var(--grid-gutter-current) / 2))`;
 }
 
 export function Grid({
@@ -175,7 +186,10 @@ export function Grid({
 		} satisfies GridStyle);
 	} else {
 		const leftOffsetBase = convertify(offsetLeft, "offsetLeft");
-		const leftOffsetAltBase = convertify(offsetLeftAlt, "offsetLeftAlt");
+		const leftOffsetAltBase = applyOffsetLeftAltAdjustment(
+			offsetLeftAlt,
+			convertify(offsetLeftAlt, "offsetLeftAlt"),
+		);
 		const rightOffsetBase = convertify(offsetRight, "offsetRight");
 
 		if (
@@ -187,9 +201,7 @@ export function Grid({
 			);
 		}
 
-		const resolvedLeftOffset = leftOffsetBase
-			? `calc(15px + ${leftOffsetBase})`
-			: leftOffsetAltBase;
+		const resolvedLeftOffset = leftOffsetBase ?? leftOffsetAltBase;
 
 		Object.assign(style, {
 			flex: "none",

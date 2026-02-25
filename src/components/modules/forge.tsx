@@ -27,9 +27,7 @@ export function Forge() {
 								</p>
 								<div className="font-display text-(length:--text-4xl-36px) font-light leading-10 tracking-[-0.36px]">
 									<p className="text-(--bunker-800)">{forge.header.title}</p>
-									<p className="text-(--alabaster-150)">
-										{forge.header.subtitle}
-									</p>
+									<p className="text-(--bunker-325)">{forge.header.subtitle}</p>
 								</div>
 							</div>
 							<p className="w-[566px] whitespace-pre-line font-sans text-(length:--text-xl-20px) font-normal leading-7 tracking-[-0.2px] text-(--gallery-550)">
