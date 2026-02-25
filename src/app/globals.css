@@ -2,11 +2,62 @@
 @import "./tokens.css";
 
 @theme inline {
-  --font-sans: var(--font-ibm-plex-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
-  --font-mono: var(--font-ibm-plex-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+	--font-sans: var(--font-ibm-plex-sans), ui-sans-serif, system-ui, sans-serif;
+	--font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+	--font-mono:
+		var(--font-ibm-plex-mono), ui-monospace, SFMono-Regular, Menlo, Monaco,
+		Consolas, "Liberation Mono", "Courier New", monospace;
+
+	--breakpoint-tablet: 720px;
+	--breakpoint-desktop: 1080px;
+
+	--font-size-xxs: var(--text-xxs-10px);
+	--font-size-xs: var(--text-xs-12px);
+	--font-size-sm: var(--text-sm-14px);
+	--font-size-base: var(--text-base-16px);
+	--font-size-lg: var(--text-lg-18px);
+	--font-size-xl: var(--text-xl-20px);
+	--font-size-2xl: var(--text-2xl-24px);
+	--font-size-3xl: var(--text-3xl-30px);
+	--font-size-4xl: var(--text-4xl-36px);
+	--font-size-5xl: var(--text-5xl-48px);
+	--font-size-6xl: var(--text-6xl-60px);
+	--font-size-7xl: var(--text-7xl-72px);
+	--font-size-8xl: var(--text-8xl-80px);
 }
 
 body {
-  font-family: var(--font-ibm-plex-sans), ui-sans-serif, system-ui, sans-serif;
+	font-family: var(--font-ibm-plex-sans), ui-sans-serif, system-ui, sans-serif;
+	overflow-x: clip;
+}
+
+@layer components {
+	[data-grid-col] {
+		--_span: var(--span-m, var(--grid-column-count));
+		--_gutter: var(--grid-gutter-fluid);
+		padding-inline: calc(var(--_gutter) / 2);
+		width: calc((var(--_span) / var(--grid-column-count)) * 100%);
+		min-width: 0;
+	}
+
+	@media (min-width: 720px) {
+		[data-grid-col] {
+			--_span: var(--span-t, var(--span-m, var(--grid-column-count)));
+		}
+	}
+
+	@media (min-width: 1080px) {
+		[data-grid-col] {
+			--_span: var(
+				--span-d,
+				var(--span-t, var(--span-m, var(--grid-column-count)))
+			);
+		}
+	}
+
+	[data-grid-row] {
+		display: flex;
+		flex-wrap: wrap;
+		margin-inline: calc(var(--grid-gutter-fluid) / -2);
+	}
 }

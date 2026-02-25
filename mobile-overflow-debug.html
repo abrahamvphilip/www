@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Overflow Debugger</title>
+    <style>
+        body {
+            font-family: 'Monaco', 'Courier New', monospace;
+            padding: 20px;
+            background: #1e1e1e;
+            color: #d4d4d4;
+            font-size: 12px;
+        }
+        .debug-section {
+            margin-bottom: 30px;
+            padding: 15px;
+            background: #252526;
+            border-radius: 5px;
+            border-left: 3px solid #007acc;
+        }
+        h2 {
+            margin-top: 0;
+            color: #4ec9b0;
+            font-size: 16px;
+        }
+        pre {
+            background: #1e1e1e;
+            padding: 10px;
+            border-radius: 3px;
+            overflow-x: auto;
+            font-size: 11px;
+            line-height: 1.4;
+        }
+        .element-item {
+            padding: 8px;
+            margin: 5px 0;
+            background: #2d2d30;
+            border-left: 2px solid #f48771;
+            border-radius: 3px;
+        }
+        .element-item:hover {
+            background: #3e3e42;
+            cursor: pointer;
+        }
+        .tag { color: #569cd6; }
+        .key { color: #9cdcfe; }
+        .value { color: #ce9178; }
+        .number { color: #b5cea8; }
+        button {
+            background: #0e639c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 12px;
+            margin: 5px;
+        }
+        button:hover {
+            background: #1177bb;
+        }
+        .highlight-box {
+            position: fixed;
+            border: 3px solid red;
+            background: rgba(255, 0, 0, 0.1);
+            pointer-events: none;
+            z-index: 999999;
+            box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5);
+        }
+        .warning {
+            color: #f48771;
+            font-weight: bold;
+        }
+        .success {
+            color: #4ec9b0;
+            font-weight: bold;
+        }
+        .info {
+            color: #dcdcaa;
+        }
+        .controls {
+            position: sticky;
+            top: 0;
+            background: #1e1e1e;
+            padding: 10px 0;
+            z-index: 1000;
+            border-bottom: 2px solid #007acc;
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <h1>🔍 Mobile Overflow Debugger</h1>
+        <button onclick="runAllChecks()">🔄 Run All Checks</button>
+        <button onclick="highlightOverflowing()">🎯 Highlight Overflowing Elements</button>
+        <button onclick="clearHighlights()">🧹 Clear Highlights</button>
+        <button onclick="copyResults()">📋 Copy All Results</button>
+    </div>
+
+    <div id="results"></div>
+
+    <script>
+        let allResults = {};
+
+        function runAllChecks() {
+            allResults = {};
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '<p class="info">Running checks on http://localhost:3000 ...</p>';
+
+            // Check 1: Document dimensions
+            const docDimensions = {
+                bodyScrollWidth: document.body.scrollWidth,
+                htmlScrollWidth: document.documentElement.scrollWidth,
+                windowInnerWidth: window.innerWidth,
+                bodyOffsetWidth: document.body.offsetWidth,
+                documentClientWidth: document.documentElement.clientWidth,
+                hasHorizontalScroll: document.documentElement.scrollWidth > window.innerWidth
+            };
+            allResults.documentDimensions = docDimensions;
+
+            // Check 2: Elements with scrollWidth > viewport
+            const scrollWidthResults = [];
+            document.querySelectorAll('*').forEach(el => {
+                if (el.scrollWidth > document.documentElement.clientWidth) {
+                    const computedStyle = window.getComputedStyle(el);
+                    scrollWidthResults.push({
+                        tag: el.tagName,
+                        class: el.className.substring(0, 100),
+                        id: el.id,
+                        scrollWidth: el.scrollWidth,
+                        clientWidth: el.clientWidth,
+                        offsetWidth: el.offsetWidth,
+                        rect: el.getBoundingClientRect().width,
+                        padding: computedStyle.padding,
+                        margin: computedStyle.margin,
+                        boxSizing: computedStyle.boxSizing,
+                        overflow: computedStyle.overflow,
+                        overflowX: computedStyle.overflowX
+                    });
+                }
+            });
+            allResults.scrollWidthOverflow = scrollWidthResults;
+
+            // Check 3: Elements extending beyond viewport
+            const overflowing = [];
+            document.querySelectorAll('*').forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.right > window.innerWidth + 1 || rect.left < -1) {
+                    const computedStyle = window.getComputedStyle(el);
+                    overflowing.push({
+                        tag: el.tagName,
+                        class: el.className.substring(0, 100),
+                        id: el.id,
+                        left: Math.round(rect.left),
+                        right: Math.round(rect.right),
+                        width: Math.round(rect.width),
+                        viewportWidth: window.innerWidth,
+                        overflow: rect.right - window.innerWidth,
+                        position: computedStyle.position,
+                        display: computedStyle.display,
+                        boxSizing: computedStyle.boxSizing,
+                        element: el
+                    });
+                }
+            });
+            allResults.positionOverflow = overflowing;
+
+            // Check 4: Container and Grid system inspection
+            const containerElements = Array.from(document.querySelectorAll('[style*="--page-limit"], [style*="--container-gutter"]'));
+            const gridElements = Array.from(document.querySelectorAll('[data-grid-row], [data-grid-col]'));
+            
+            allResults.layoutSystem = {
+                containers: containerElements.map(el => ({
+                    tag: el.tagName,
+                    class: el.className.substring(0, 100),
+                    computedWidth: window.getComputedStyle(el).width,
+                    computedMaxWidth: window.getComputedStyle(el).maxWidth,
+                    computedPadding: window.getComputedStyle(el).padding,
+                    rect: el.getBoundingClientRect()
+                })),
+                gridElements: gridElements.map(el => ({
+                    tag: el.tagName,
+                    type: el.hasAttribute('data-grid-row') ? 'row' : 'col',
+                    class: el.className.substring(0, 100),
+                    computedWidth: window.getComputedStyle(el).width,
+                    computedMargin: window.getComputedStyle(el).margin,
+                    rect: el.getBoundingClientRect()
+                }))
+            };
+
+            // Check 5: CSS Custom Properties
+            const rootStyles = getComputedStyle(document.documentElement);
+            allResults.cssVariables = {
+                pageLimit: rootStyles.getPropertyValue('--page-limit'),
+                containerGutterFluid: rootStyles.getPropertyValue('--container-gutter-fluid'),
+                gridGutterFluid: rootStyles.getPropertyValue('--grid-gutter-fluid'),
+                gridColumnCount: rootStyles.getPropertyValue('--grid-column-count')
+            };
+
+            displayResults();
+        }
+
+        function displayResults() {
+            const resultsDiv = document.getElementById('results');
+            let html = '';
+
+            // Document Dimensions
+            html += '<div class="debug-section">';
+            html += '<h2>📏 Document Dimensions</h2>';
+            const dims = allResults.documentDimensions;
+            html += `<p>${dims.hasHorizontalScroll ? '<span class="warning">⚠️ HORIZONTAL SCROLL DETECTED!</span>' : '<span class="success">✓ No horizontal scroll</span>'}</p>`;
+            html += `<pre>${JSON.stringify(dims, null, 2)}</pre>`;
+            html += '</div>';
+
+            // CSS Variables
+            html += '<div class="debug-section">';
+            html += '<h2>🎨 CSS Custom Properties</h2>';
+            html += `<pre>${JSON.stringify(allResults.cssVariables, null, 2)}</pre>`;
+            html += '</div>';
+
+            // ScrollWidth Overflow
+            html += '<div class="debug-section">';
+            html += `<h2>📦 Elements with scrollWidth > viewport (${allResults.scrollWidthOverflow.length})</h2>`;
+            if (allResults.scrollWidthOverflow.length === 0) {
+                html += '<p class="success">✓ No elements found</p>';
+            } else {
+                allResults.scrollWidthOverflow.forEach((item, idx) => {
+                    html += `<div class="element-item" onclick="highlightElement(${idx}, 'scrollWidthOverflow')">`;
+                    html += `<span class="tag">&lt;${item.tag.toLowerCase()}&gt;</span> `;
+                    if (item.class) html += `<span class="key">class="${item.class}"</span><br>`;
+                    html += `<span class="number">scrollWidth: ${item.scrollWidth}px</span> | `;
+                    html += `<span class="number">viewport: ${document.documentElement.clientWidth}px</span> | `;
+                    html += `<span class="warning">overflow: ${item.scrollWidth - document.documentElement.clientWidth}px</span><br>`;
+                    html += `<span class="info">overflow-x: ${item.overflowX}</span>`;
+                    html += '</div>';
+                });
+            }
+            html += '</div>';
+
+            // Position Overflow
+            html += '<div class="debug-section">';
+            html += `<h2>📍 Elements extending beyond viewport (${allResults.positionOverflow.length})</h2>`;
+            if (allResults.positionOverflow.length === 0) {
+                html += '<p class="success">✓ No elements found</p>';
+            } else {
+                allResults.positionOverflow.slice(0, 30).forEach((item, idx) => {
+                    html += `<div class="element-item" onclick="scrollToAndHighlight(${idx}, 'positionOverflow')">`;
+                    html += `<span class="tag">&lt;${item.tag.toLowerCase()}&gt;</span> `;
+                    if (item.class) html += `<span class="key">class="${item.class}"</span><br>`;
+                    html += `<span class="number">left: ${item.left}px</span> | `;
+                    html += `<span class="number">right: ${item.right}px</span> | `;
+                    html += `<span class="warning">overflow: ${Math.round(item.overflow)}px</span><br>`;
+                    html += `<span class="info">position: ${item.position}</span> | `;
+                    html += `<span class="info">display: ${item.display}</span>`;
+                    html += '</div>';
+                });
+            }
+            html += '</div>';
+
+            // Layout System
+            html += '<div class="debug-section">';
+            html += '<h2>🏗️ Layout System Analysis</h2>';
+            html += `<p><strong>Containers found:</strong> ${allResults.layoutSystem.containers.length}</p>`;
+            html += `<p><strong>Grid elements found:</strong> ${allResults.layoutSystem.gridElements.length}</p>`;
+            html += `<pre>${JSON.stringify(allResults.layoutSystem, null, 2)}</pre>`;
+            html += '</div>';
+
+            resultsDiv.innerHTML = html;
+        }
+
+        function highlightElement(idx, category) {
+            clearHighlights();
+            const items = allResults[category];
+            if (!items || !items[idx]) return;
+
+            const item = items[idx];
+            let element;
+
+            if (item.element) {
+                element = item.element;
+            } else {
+                // Try to find the element by tag and class
+                const selector = item.class ? `${item.tag}.${item.class.split(' ')[0]}` : item.tag;
+                element = document.querySelector(selector);
+            }
+
+            if (element) {
+                const rect = element.getBoundingClientRect();
+                const highlight = document.createElement('div');
+                highlight.className = 'highlight-box';
+                highlight.style.top = (rect.top + window.scrollY) + 'px';
+                highlight.style.left = rect.left + 'px';
+                highlight.style.width = rect.width + 'px';
+                highlight.style.height = rect.height + 'px';
+                document.body.appendChild(highlight);
+
+                element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        function scrollToAndHighlight(idx, category) {
+            clearHighlights();
+            const item = allResults[category][idx];
+            if (!item || !item.element) return;
+
+            const element = item.element;
+            const rect = element.getBoundingClientRect();
+            
+            const highlight = document.createElement('div');
+            highlight.className = 'highlight-box';
+            highlight.style.top = (rect.top + window.scrollY) + 'px';
+            highlight.style.left = rect.left + 'px';
+            highlight.style.width = rect.width + 'px';
+            highlight.style.height = rect.height + 'px';
+            document.body.appendChild(highlight);
+
+            element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function highlightOverflowing() {
+            clearHighlights();
+            if (allResults.positionOverflow) {
+                allResults.positionOverflow.forEach(item => {
+                    if (item.element) {
+                        const rect = item.element.getBoundingClientRect();
+                        const highlight = document.createElement('div');
+                        highlight.className = 'highlight-box';
+                        highlight.style.top = (rect.top + window.scrollY) + 'px';
+                        highlight.style.left = rect.left + 'px';
+                        highlight.style.width = rect.width + 'px';
+                        highlight.style.height = rect.height + 'px';
+                        document.body.appendChild(highlight);
+                    }
+                });
+            }
+        }
+
+        function clearHighlights() {
+            document.querySelectorAll('.highlight-box').forEach(el => el.remove());
+        }
+
+        function copyResults() {
+            const text = JSON.stringify(allResults, null, 2);
+            navigator.clipboard.writeText(text).then(() => {
+                alert('✓ Results copied to clipboard!');
+            });
+        }
+
+        // Auto-run on load
+        window.addEventListener('load', () => {
+            setTimeout(runAllChecks, 500);
+        });
+    </script>
+</body>
+</html>

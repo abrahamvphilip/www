@@ -1,124 +1,123 @@
 .gridOverlay {
-  --grid-overlay-column-color: rgb(9 0 255 / 10%);
+	--grid-overlay-column-color: rgb(9 0 255 / 10%);
 
-  position: fixed;
-  inset: 0;
-  z-index: 10000;
-  overflow: hidden;
-  pointer-events: none;
-  transform-origin: 50% 0%;
+	position: fixed;
+	inset: 0;
+	z-index: 10000;
+	overflow: clip;
+	pointer-events: none;
+	transform-origin: 50% 0%;
 }
 
 .gridOverlay__container {
-  width: min(100%, var(--page-limit));
-  height: 100%;
-  margin-inline: auto;
-  padding-inline: var(--container-gutter-mobile);
-  opacity: 0;
-  transition: opacity 0.2s ease;
+	width: min(100%, var(--page-limit));
+	height: 100%;
+	margin-inline: auto;
+	padding-inline: var(--container-gutter-fluid);
+	opacity: 0;
+	transition: opacity 0.2s ease;
 }
 
 .gridOverlay.gridOverlayIsVerticalVisible .gridOverlay__container {
-  opacity: 1;
+	opacity: 1;
 }
 
 .gridOverlay.gridOverlayIsHorizontalIsVisible {
-  background:
-    linear-gradient(
-      to bottom,
-      transparent calc(100% - (1 / var(--grid-baseline-calc, 8) * 100%)),
-      color-mix(in srgb, var(--bunker-950) 14%, transparent)
-        calc(100% - (1 / var(--grid-baseline-calc, 8) * 100%))
-    ),
-    linear-gradient(
-      to bottom,
-      transparent calc(100% - (1 / var(--grid-baseline-calc, 8) * 100%)),
-      color-mix(in srgb, var(--alabaster-25) 18%, transparent)
-        calc(100% - (1 / var(--grid-baseline-calc, 8) * 100%))
-    );
-  background-size: var(--grid-baseline, 8px) var(--grid-baseline, 8px);
+	background:
+		linear-gradient(
+			to bottom,
+			transparent calc(100% - (1 / var(--grid-baseline-calc, 8) * 100%)),
+			color-mix(in srgb, var(--bunker-950) 14%, transparent)
+				calc(100% - (1 / var(--grid-baseline-calc, 8) * 100%))
+		),
+		linear-gradient(
+			to bottom,
+			transparent calc(100% - (1 / var(--grid-baseline-calc, 8) * 100%)),
+			color-mix(in srgb, var(--alabaster-25) 18%, transparent)
+				calc(100% - (1 / var(--grid-baseline-calc, 8) * 100%))
+		);
+	background-size: var(--grid-baseline, 8px) var(--grid-baseline, 8px);
 }
 
 .gridOverlay__row {
-  display: flex;
-  height: 100%;
-  margin-inline: calc(var(--container-gutter-mobile) / -2);
+	display: flex;
+	height: 100%;
+	margin-inline: calc(var(--grid-gutter-fluid) / -2);
 }
 
 .gridOverlay__column {
-  position: relative;
-  flex: 0 0 calc(100% / var(--grid-column-count, 12));
-  min-width: calc(100% / var(--grid-column-count, 12));
-  height: 100%;
-  padding-inline: calc(var(--container-gutter-mobile) / 2);
+	position: relative;
+	flex: 1 0 0%;
+	height: 100%;
+	padding-inline: calc(var(--grid-gutter-fluid) / 2);
 }
 
 .gridOverlay__visualize {
-  position: relative;
-  width: 100%;
-  height: 100%;
+	position: relative;
+	width: 100%;
+	height: 100%;
 }
 
 .gridOverlay__visualize::before,
 .gridOverlay__visualize::after {
-  position: absolute;
-  inset: 0;
-  content: "";
+	position: absolute;
+	inset: 0;
+	content: "";
 }
 
 .gridOverlay__visualize::before {
-  background-color: var(--grid-overlay-column-color);
+	background-color: var(--grid-overlay-column-color);
 }
 
 .gridOverlay__visualize::after {
-  background-color: transparent;
+	background-color: transparent;
 }
 
 .gridOverlay__button {
-  position: fixed;
-  top: 0;
-  right: 72px;
-  z-index: 10001;
-  height: 26px;
-  padding: 0 15px;
-  border-width: 0 1px 1px;
-  border-style: solid;
-  border-color: color-mix(in srgb, var(--bunker-950) 12%, transparent);
-  border-radius: 0 0 2px 2px;
-  background-color: var(--alabaster-25);
-  color: var(--bunker-425);
-  cursor: pointer;
-  pointer-events: auto;
-  opacity: 1;
-  transition:
-    opacity 0.25s ease,
-    transform 0.1s ease,
-    color 0.2s ease;
+	position: fixed;
+	top: 0;
+	right: 72px;
+	z-index: 10001;
+	height: 26px;
+	padding: 0 15px;
+	border-width: 0 1px 1px;
+	border-style: solid;
+	border-color: color-mix(in srgb, var(--bunker-950) 12%, transparent);
+	border-radius: 0 0 2px 2px;
+	background-color: var(--alabaster-25);
+	color: var(--bunker-425);
+	cursor: pointer;
+	pointer-events: auto;
+	opacity: 1;
+	transition:
+		opacity 0.25s ease,
+		transform 0.1s ease,
+		color 0.2s ease;
 }
 
 .gridOverlay__button:first-of-type {
-  right: 128px;
+	right: 128px;
 }
 
 .gridOverlay__button:hover {
-  color: var(--bunker-800);
+	color: var(--bunker-800);
 }
 
 .gridOverlay__button.horizontal,
 .gridOverlay__button.vertical {
-  color: var(--blue-lagoon-425);
+	color: var(--blue-lagoon-425);
 }
 
 .gridOverlay__button__svg {
-  margin-top: 4px;
+	margin-top: 4px;
 }
 
 @media (max-width: 719px) {
-  .gridOverlay__button {
-    right: 14px;
-  }
+	.gridOverlay__button {
+		right: 14px;
+	}
 
-  .gridOverlay__button:first-of-type {
-    right: 70px;
-  }
+	.gridOverlay__button:first-of-type {
+		right: 70px;
+	}
 }

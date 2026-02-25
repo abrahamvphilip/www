@@ -14,20 +14,28 @@
 	--text-7xl: 72px;
 	--text-8xl: 80px;
 
-	/* Responsive alias layer (desktop defaults) */
-	--text-xxs-10px: var(--text-xxs);
-	--text-xs-12px: var(--text-xs);
-	--text-sm-14px: var(--text-sm);
-	--text-base-16px: var(--text-base);
-	--text-lg-18px: var(--text-lg);
-	--text-xl-20px: var(--text-xl);
-	--text-2xl-24px: var(--text-2xl);
-	--text-3xl-30px: var(--text-3xl);
-	--text-4xl-36px: var(--text-4xl);
-	--text-5xl-48px: var(--text-5xl);
-	--text-6xl-60px: var(--text-6xl);
-	--text-7xl-72px: var(--text-7xl);
-	--text-8xl-80px: var(--text-8xl);
+	/* Fluid responsive alias layer (osenorth-xlr responsive-font formula)
+	 *
+	 * multiplier = (max - min) / (page_limit - min_mobile)
+	 * baseline   = min - multiplier * min_mobile
+	 * clamp(min, calc(baseline + multiplier * 100vw), max)
+	 *
+	 * Range: 420px (--bp-min-mobile) → 1880px (--page-limit)
+	 * Body text barely scales (readability), display text scales aggressively.
+	 */
+	--text-xxs-10px: 10px;
+	--text-xs-12px: clamp(11px, calc(10.71px + 0.0685vw), 12px);
+	--text-sm-14px: clamp(12px, calc(11.43px + 0.137vw), 14px);
+	--text-base-16px: clamp(14px, calc(13.43px + 0.137vw), 16px);
+	--text-lg-18px: clamp(15px, calc(14.14px + 0.2055vw), 18px);
+	--text-xl-20px: clamp(16px, calc(14.85px + 0.274vw), 20px);
+	--text-2xl-24px: clamp(18px, calc(16.27px + 0.411vw), 24px);
+	--text-3xl-30px: clamp(22px, calc(19.7px + 0.548vw), 30px);
+	--text-4xl-36px: clamp(24px, calc(20.55px + 0.822vw), 36px);
+	--text-5xl-48px: clamp(30px, calc(24.82px + 1.233vw), 48px);
+	--text-6xl-60px: clamp(36px, calc(29.1px + 1.644vw), 60px);
+	--text-7xl-72px: clamp(42px, calc(33.37px + 2.055vw), 72px);
+	--text-8xl-80px: clamp(46px, calc(36.22px + 2.329vw), 80px);
 
 	/* Layout foundation tokens (legacy merge) */
 	--gutter: 12px;
@@ -82,6 +90,19 @@
 
 	--segment-padding-mobile: calc(var(--container-gutter-mobile) * 3);
 	--segment-padding: 144px;
+
+	/* Fluid layout tokens (clamp interpolation from mobile to desktop) */
+	--container-gutter-fluid: clamp(
+		var(--container-gutter-mobile),
+		calc(-5.82px + 4.242vw),
+		var(--container-gutter-desktop)
+	);
+	--segment-padding-fluid: clamp(
+		var(--segment-padding-mobile),
+		calc(-32.73px + 16.364vw),
+		var(--segment-padding)
+	);
+	--grid-gutter-fluid: clamp(0px, calc(-9.6px + 2vw), var(--gutter));
 
 	--vscale-800: 0.96;
 	--vscale-720: 0.92;
@@ -231,48 +252,6 @@
 	--san-marino-675: hsl(213 57% 22%);
 	--san-marino-800: hsl(214 73% 9%);
 	--san-marino-950: hsl(240 100% 0%);
-}
-
-/* Tablet typography remapping:
- * Keeps utility names stable while remapping their physical size tokens.
- */
-@media (max-width: 1079px) and (min-width: 720px) {
-	:root {
-		--text-xxs-10px: var(--text-xxs);
-		--text-xs-12px: var(--text-xs);
-		--text-sm-14px: var(--text-xs);
-		--text-base-16px: var(--text-sm);
-		--text-lg-18px: var(--text-base);
-		--text-xl-20px: var(--text-lg);
-		--text-2xl-24px: var(--text-2xl);
-		--text-3xl-30px: var(--text-3xl);
-		--text-4xl-36px: var(--text-3xl);
-		--text-5xl-48px: var(--text-4xl);
-		--text-6xl-60px: var(--text-5xl);
-		--text-7xl-72px: var(--text-6xl);
-		--text-8xl-80px: var(--text-7xl);
-	}
-}
-
-/* Mobile typography remapping:
- * Keeps utility names stable while remapping their physical size tokens.
- */
-@media (max-width: 719px) {
-	:root {
-		--text-xxs-10px: var(--text-xxs);
-		--text-xs-12px: var(--text-xxs);
-		--text-sm-14px: var(--text-xs);
-		--text-base-16px: var(--text-xs);
-		--text-lg-18px: var(--text-sm);
-		--text-xl-20px: var(--text-base);
-		--text-2xl-24px: var(--text-xl);
-		--text-3xl-30px: var(--text-xl);
-		--text-4xl-36px: var(--text-2xl);
-		--text-5xl-48px: var(--text-4xl);
-		--text-6xl-60px: var(--text-5xl);
-		--text-7xl-72px: var(--text-5xl);
-		--text-8xl-80px: var(--text-6xl);
-	}
 }
 
 /* Dark theme contract:

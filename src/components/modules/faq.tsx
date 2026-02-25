@@ -81,7 +81,7 @@ function FaqGroup({
 	onToggle: (globalIndex: number) => void;
 }) {
 	return (
-		<div className="flex w-full flex-col gap-3 lg:flex-row">
+		<div className="flex w-full flex-col gap-3 desktop:flex-row">
 			<Grid mobile={12} tablet={12} desktop={4} offsetLeftAlt={1}>
 				<div className="w-full py-3">
 					<h3 className="font-display text-(length:--text-2xl-24px) font-light leading-8 tracking-[-0.24px] text-(--bunker-800)">

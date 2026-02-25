@@ -120,12 +120,12 @@ export function Footer() {
 			<Segment className="pb-0!">
 				<Container
 					as="div"
-					className="relative z-10 flex flex-col gap-14 px-10! pt-[144px]!"
+					className="relative z-10 flex flex-col gap-14 px-10! pt-[144px]! max-tablet:gap-10 max-tablet:px-4! max-tablet:pt-16!"
 				>
 					{/* Top row */}
-					<div className="flex items-start justify-between">
+					<div className="flex items-start justify-between max-tablet:flex-col max-tablet:gap-10">
 						{/* Left column */}
-						<div className="flex w-[421px] flex-col gap-10">
+						<div className="flex w-full max-w-[421px] flex-col gap-10 max-tablet:max-w-full">
 							<p className="font-sans text-(length:--text-3xl-30px) font-normal leading-9 tracking-[-0.3px] text-(--bunker-800)">
 								{footer.title}
 							</p>
@@ -152,7 +152,7 @@ export function Footer() {
 						</div>
 
 						{/* Right column */}
-						<div className="flex w-[421px] justify-end gap-5">
+						<div className="flex w-full max-w-[421px] justify-end gap-5 max-tablet:max-w-full max-tablet:justify-start">
 							{footer.groups.slice(0, 2).map((group) => (
 								<FooterLinkGroup key={group.title} group={group} />
 							))}
@@ -161,18 +161,18 @@ export function Footer() {
 
 					{/* Compliance badges */}
 					<div className="flex flex-col items-center overflow-hidden rounded-[12px] px-5">
-						<div className="flex items-center gap-[54px] overflow-hidden py-[25px]">
-							<div className="size-20 rounded-[12px] bg-(--gallery-100)">
+						<div className="flex items-center gap-[54px] overflow-hidden py-[25px] max-tablet:gap-6">
+							<div className="size-20 rounded-[12px] bg-(--gallery-100) max-tablet:size-16">
 								{/*
 								<Image src={gdprBadge} alt="GDPR" fill className="object-cover rounded-[12px]" />
 								*/}
 							</div>
-							<div className="size-20 rounded-[12px] bg-(--gallery-100)">
+							<div className="size-20 rounded-[12px] bg-(--gallery-100) max-tablet:size-16">
 								{/*
 								<Image src={soc2Badge} alt="SOC 2" fill className="object-cover rounded-[12px]" />
 								*/}
 							</div>
-							<div className="size-20 rounded-[12px] bg-(--gallery-100)">
+							<div className="size-20 rounded-[12px] bg-(--gallery-100) max-tablet:size-16">
 								{/*
 								<Image src={hipaaBadge} alt="HIPAA" fill className="object-cover rounded-[12px]" />
 								*/}
@@ -181,14 +181,14 @@ export function Footer() {
 					</div>
 
 					{/* Bottom bar */}
-					<div className="flex items-center justify-between border-t border-(--bunker-800)/14 pt-8">
-						<p className="w-[400px] font-sans text-(length:--text-sm-14px) font-normal leading-5 text-(--bunker-325)">
+					<div className="flex items-center justify-between border-t border-(--bunker-800)/14 pt-8 max-tablet:flex-col max-tablet:gap-6 max-tablet:items-start">
+						<p className="w-full max-w-[400px] font-sans text-(length:--text-sm-14px) font-normal leading-5 text-(--bunker-325) max-tablet:max-w-full">
 							{footer.legal}
 						</p>
 
-						<BrandMark className="justify-center" />
+						<BrandMark className="justify-center max-tablet:justify-start" />
 
-						<div className="flex w-[400px] items-center justify-end gap-10">
+						<div className="flex w-full max-w-[400px] items-center justify-end gap-10 max-tablet:max-w-full max-tablet:justify-start max-tablet:flex-wrap max-tablet:gap-6">
 							{footer.policyLinks.map((link) => (
 								<Link
 									key={link}

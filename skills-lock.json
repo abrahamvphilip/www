@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "skills": {
+    "math": {
+      "source": "parcadei/continuous-claude-v3",
+      "sourceType": "github",
+      "computedHash": "13fc5f5bc185198642adea57aaff35a4dcd4bde6c7c0eaa67c7e787e969d6018"
+    }
+  }
+}

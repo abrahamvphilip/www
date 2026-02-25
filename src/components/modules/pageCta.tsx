@@ -38,7 +38,7 @@ export function PageCta() {
 	return (
 		<section
 			data-section-id="866:17275"
-			className="relative min-h-[80vh] overflow-hidden bg-(--gallery-50)"
+			className="relative min-h-[80vh] overflow-hidden bg-(--gallery-50) max-tablet:min-h-[60vh]"
 		>
 			<div className="absolute inset-0">
 				{/*
@@ -55,26 +55,26 @@ export function PageCta() {
 			<Segment className="p-0!">
 				<Container
 					as="div"
-					className="relative flex min-h-[80vh] items-center justify-center px-10! pb-[40px]"
+					className="relative flex min-h-[80vh] items-center justify-center px-10! pb-[40px] max-tablet:min-h-[60vh] max-tablet:px-4!"
 				>
-					<div className="flex w-[854px] flex-col items-center py-16">
+					<div className="flex w-full max-w-[854px] flex-col items-center py-16 max-tablet:py-10">
 						<div className="flex w-full flex-col items-center gap-5">
 							<p className="font-sans text-(length:--text-xs-12px) font-medium uppercase leading-4 tracking-[0.5px] text-(--bunker-325)">
 								{cta.header.eyebrow}
 							</p>
 
-							<p className="whitespace-pre-line text-center font-sans text-(length:--text-4xl-36px) font-normal leading-10 tracking-[-0.36px] text-(--alabaster-800)">
+							<p className="whitespace-pre-line text-center font-sans text-(length:--text-4xl-36px) font-normal leading-10 tracking-[-0.36px] text-(--alabaster-800) max-tablet:leading-8">
 								{cta.header.title}
 							</p>
 
 							<div className="flex w-full flex-col items-center gap-5">
-								<div className="w-[560px]">
+								<div className="w-full max-w-[560px] max-tablet:max-w-full">
 									<p className="text-center font-sans text-(length:--text-base-16px) font-normal leading-6 text-(--alabaster-800)">
 										{cta.body}
 									</p>
 								</div>
 
-								<div className="flex w-[566px] gap-2 pt-3">
+								<div className="flex w-full max-w-[566px] gap-2 pt-3 max-tablet:max-w-full max-tablet:flex-col">
 									<a
 										href="/console"
 										className="relative flex flex-1 items-center justify-center gap-2 overflow-hidden rounded-[12px] border border-(--royal-blue-550) bg-(--royal-blue-550) px-3 py-2 font-sans text-(length:--text-sm-14px) font-medium leading-5 text-white shadow-[0px_1px_1px_0.05px_rgba(24,24,27,0.24)]"

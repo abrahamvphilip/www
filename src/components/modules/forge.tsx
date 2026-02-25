@@ -11,31 +11,26 @@ export function Forge() {
 		<Segment className="p-0!">
 			<Container
 				as={"section"}
-				className="flex flex-row justify-between px-10 pt-[120px]"
+				className="flex flex-col justify-between px-10 pt-[120px] desktop:flex-row max-tablet:px-4 max-tablet:pt-16"
 			>
-				<Grid
-					mobile={12}
-					tablet={12}
-					desktop={4}
-					className="lg:-ml-[calc(var(--gutter)/2)]"
-				>
-					<div className="flex h-[854px] flex-col justify-between">
-						<div className="flex w-[565px] flex-col gap-6 pb-16 pt-20">
+				<Grid mobile={12} tablet={12} desktop={4}>
+					<div className="flex h-auto flex-col justify-between desktop:h-[854px]">
+						<div className="flex w-full max-w-[565px] flex-col gap-6 pb-16 pt-20 max-tablet:max-w-full max-tablet:pb-8 max-tablet:pt-10">
 							<div className="flex flex-col gap-3">
 								<p className="h-7 font-sans text-xs font-medium uppercase leading-4 tracking-[0.5px] text-(--bunker-550)">
 									{forge.header.eyebrow}
 								</p>
-								<div className="font-display text-(length:--text-4xl-36px) font-light leading-10 tracking-[-0.36px]">
+								<div className="font-display text-(length:--text-4xl-36px) font-light leading-10 tracking-[-0.36px] max-tablet:leading-8">
 									<p className="text-(--bunker-800)">{forge.header.title}</p>
 									<p className="text-(--bunker-325)">{forge.header.subtitle}</p>
 								</div>
 							</div>
-							<p className="w-[566px] whitespace-pre-line font-sans text-(length:--text-xl-20px) font-normal leading-7 tracking-[-0.2px] text-(--gallery-550)">
+							<p className="w-full max-w-[566px] whitespace-pre-line font-sans text-(length:--text-xl-20px) font-normal leading-7 tracking-[-0.2px] text-(--gallery-550) max-tablet:max-w-full max-tablet:leading-6">
 								{forge.header.description}
 							</p>
 						</div>
 
-						<div className="flex w-[565px] items-start gap-6 pb-16">
+						<div className="flex w-full max-w-[565px] items-start gap-6 pb-16 max-tablet:max-w-full max-tablet:pb-8">
 							<button
 								type="button"
 								className="inline-flex h-[38px] items-center justify-center px-3 py-2 font-sans text-sm font-medium leading-5 text-(--bunker-800)"
@@ -67,9 +62,9 @@ export function Forge() {
 					mobile={12}
 					tablet={12}
 					desktop={6}
-					className="flex justify-end lg:pr-0!"
+					className="flex justify-end desktop:pr-0!"
 				>
-					<div className="relative h-[854px] w-full bg-(--gallery-100)">
+					<div className="relative h-[854px] w-full bg-(--gallery-100) max-desktop:h-[400px] max-tablet:h-[280px]">
 						{/*
                 <Image
                   src={forgeVisual}
