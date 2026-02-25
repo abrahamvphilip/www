@@ -2,9 +2,9 @@
 
 import { useMemo, useState } from "react";
 
-import { CodePanel } from "@/components/docs/CodePanel";
+import { CodePanel } from "@/components/docs/codePanel";
 import { cloneState } from "@/components/docs/controlState";
-import { PropTable } from "@/components/docs/PropTable";
+import { PropTable } from "@/components/docs/propTable";
 import type { ComponentDocEntry, PropDoc } from "@/components/docs/types";
 
 const INTERACTIVE_KINDS = new Set(["boolean", "select", "elementType", "reactNodePreset"]);

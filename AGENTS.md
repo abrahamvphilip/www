@@ -44,49 +44,49 @@ This file is the canonical folder tree and structure contract for this repo.
 │   │       └── useLocalStorage.ts
 │   ├── components/
 │   │   ├── modules/
-│   │   │   ├── BuildingBlocksSection.tsx
-│   │   │   ├── CareersSection.tsx
-│   │   │   ├── CtaSection.tsx
-│   │   │   ├── FaqSection.tsx
-│   │   │   ├── Footer.tsx
-│   │   │   ├── ForgeSection.tsx
-│   │   │   ├── Hero.tsx
-│   │   │   ├── IntroStrip.tsx
-│   │   │   ├── Navbar.tsx
-│   │   │   ├── NexusSection.tsx
-│   │   │   ├── ProblemStrip.tsx
-│   │   │   └── ResourcesSection.tsx
+│   │   │   ├── buildingBlocksSection.tsx
+│   │   │   ├── careersSection.tsx
+│   │   │   ├── ctaSection.tsx
+│   │   │   ├── faqSection.tsx
+│   │   │   ├── footer.tsx
+│   │   │   ├── forge.tsx
+│   │   │   ├── hero.tsx
+│   │   │   ├── introStrip.tsx
+│   │   │   ├── navbar.tsx
+│   │   │   ├── nexusSection.tsx
+│   │   │   ├── problemStrip.tsx
+│   │   │   └── resourcesSection.tsx
 │   │   ├── primitives/
 │   │   │   ├── _shared/
 │   │   │   │   └── useTokenViewport.ts
 │   │   │   ├── container/
-│   │   │   │   ├── Container.tsx
-│   │   │   │   └── ContainerPrimitiveDemoSection.tsx
+│   │   │   │   ├── container.tsx
+│   │   │   │   └── containerPrimitiveDemoSection.tsx
 │   │   │   ├── grid/
-│   │   │   │   ├── Grid.tsx
-│   │   │   │   └── GridPrimitiveDemoSection.tsx
+│   │   │   │   ├── grid.tsx
+│   │   │   │   └── gridPrimitiveDemoSection.tsx
 │   │   │   └── segment/
-│   │   │       ├── Segment.tsx
-│   │   │       └── SegmentPrimitiveDemoSection.tsx
+│   │   │       ├── segment.tsx
+│   │   │       └── segmentPrimitiveDemoSection.tsx
 │   │   ├── docs/
-│   │   │   ├── CodePanel.tsx
-│   │   │   ├── ComponentDocsPage.tsx
-│   │   │   ├── ComponentShowcaseCard.tsx
-│   │   │   ├── PropTable.tsx
+│   │   │   ├── codePanel.tsx
+│   │   │   ├── componentDocsPage.tsx
+│   │   │   ├── componentShowcaseCard.tsx
+│   │   │   ├── propTable.tsx
 │   │   │   ├── controlState.ts
 │   │   │   ├── loadSourceFiles.ts
 │   │   │   ├── registry.tsx
 │   │   │   ├── sourcePaths.ts
 │   │   │   └── types.ts
 │   │   └── ui/
-│   │       ├── BrandMark.tsx
-│   │       ├── ButtonChip.tsx
-│   │       ├── CardShell.tsx
-│   │       ├── DecorGrid.tsx
-│   │       ├── FooterArcBackdrop.tsx
-│   │       ├── PlaceholderMedia.tsx
-│   │       ├── SectionHeading.tsx
-│   │       └── StatBadge.tsx
+│   │       ├── brandMark.tsx
+│   │       ├── buttonChip.tsx
+│   │       ├── cardShell.tsx
+│   │       ├── decorGrid.tsx
+│   │       ├── footerArcBackdrop.tsx
+│   │       ├── placeholderMedia.tsx
+│   │       ├── sectionHeading.tsx
+│   │       └── statBadge.tsx
 │   └── data/
 │       └── home.ts
 ├── tsconfig.json

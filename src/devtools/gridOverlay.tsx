@@ -1,9 +1,8 @@
 "use client";
 
-import { type CSSProperties, useEffect, useRef, useState } from "react";
+import { type CSSProperties, useEffect, useMemo, useRef } from "react";
 
 import { useTokenViewport } from "@/components/primitives/_shared/useTokenViewport";
-import { useKeyDown } from "./hooks/useKeyDown";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 
 import "./gridOverlay.css";
@@ -38,8 +37,6 @@ export function GridOverlay({
 }: GridOverlayProps) {
   const { breakpoint, width, minMobile } = useTokenViewport();
   const gridOverlayRef = useRef<HTMLDivElement>(null);
-  const [resolvedColumns, setResolvedColumns] = useState(columns ?? 12);
-  const [resolvedBaseline, setResolvedBaseline] = useState(baseline ?? 8);
   const [isHorizontalVisible, setHorizontal] = useLocalStorage(
     LOCAL_STORAGE_KEY_HORIZONTAL,
     false,
@@ -48,7 +45,27 @@ export function GridOverlay({
     LOCAL_STORAGE_KEY_VERTICAL,
     false,
   );
-  const keys = useKeyDown();
+
+  const { resolvedColumns, resolvedBaseline } = useMemo(() => {
+    const fallbackColumns = columns ?? 12;
+    const fallbackBaseline = baseline ?? 8;
+
+    if (typeof window === "undefined" || width === 0) {
+      return {
+        resolvedColumns: fallbackColumns,
+        resolvedBaseline: fallbackBaseline,
+      };
+    }
+
+    const rootStyles = getComputedStyle(document.documentElement);
+    const tokenColumns = Number.parseInt(rootStyles.getPropertyValue("--grid-column-count"), 10);
+    const tokenBaseline = Number.parseFloat(rootStyles.getPropertyValue("--grid-baseline"));
+
+    return {
+      resolvedColumns: columns ?? (Number.isFinite(tokenColumns) ? tokenColumns : 12),
+      resolvedBaseline: baseline ?? (Number.isFinite(tokenBaseline) ? tokenBaseline : 8),
+    };
+  }, [columns, baseline, width]);
 
   const onToggleHorizontal = () => {
     setHorizontal((current) => !current);
@@ -57,22 +74,6 @@ export function GridOverlay({
   const onToggleVertical = () => {
     setVertical((current) => !current);
   };
-
-  useEffect(() => {
-    if (typeof window === "undefined") {
-      return;
-    }
-
-    const rootStyles = getComputedStyle(document.documentElement);
-    const tokenColumns = Number.parseInt(rootStyles.getPropertyValue("--grid-column-count"), 10);
-    const tokenBaseline = Number.parseFloat(rootStyles.getPropertyValue("--grid-baseline"));
-
-    const nextColumns = columns ?? (Number.isFinite(tokenColumns) ? tokenColumns : 12);
-    const nextBaseline = baseline ?? (Number.isFinite(tokenBaseline) ? tokenBaseline : 8);
-
-    setResolvedColumns(nextColumns);
-    setResolvedBaseline(nextBaseline);
-  }, [columns, baseline, width]);
 
   useEffect(() => {
     if (!gridOverlayRef.current) {
@@ -95,14 +96,24 @@ export function GridOverlay({
   }, [breakpoint, minMobile, resolvedBaseline, resolvedColumns, width]);
 
   useEffect(() => {
-    if (keys.includes(17) && keys.includes(76)) {
-      setVertical((current) => !current);
-    }
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (!event.ctrlKey || event.repeat) {
+        return;
+      }
 
-    if (keys.includes(17) && keys.includes(77)) {
-      setHorizontal((current) => !current);
-    }
-  }, [keys, setHorizontal, setVertical]);
+      const key = event.key.toLowerCase();
+      if (key === "l") {
+        setVertical((current) => !current);
+      }
+
+      if (key === "m") {
+        setHorizontal((current) => !current);
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [setHorizontal, setVertical]);
 
   const className = `gridOverlay ${isHorizontalVisible ? "gridOverlayIsHorizontalIsVisible" : ""} ${
     isVerticalVisible ? "gridOverlayIsVerticalVisible" : ""

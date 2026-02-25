@@ -1,10 +1,10 @@
 import { homeResources } from "@/data/home";
 
-import { Container } from "@/components/primitives/container/Container";
-import { Segment } from "@/components/primitives/segment/Segment";
-import { ButtonChip } from "@/components/ui/ButtonChip";
-import { PlaceholderMedia } from "@/components/ui/PlaceholderMedia";
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Container } from "@/components/primitives/container/container";
+import { Segment } from "@/components/primitives/segment/segment";
+import { ButtonChip } from "@/components/ui/buttonChip";
+import { PlaceholderMedia } from "@/components/ui/placeholderMedia";
+import { SectionHeading } from "@/components/ui/sectionHeading";
 
 function ResourceCard({ card, index }: { card: (typeof homeResources.cards)[number]; index: number }) {
   return (

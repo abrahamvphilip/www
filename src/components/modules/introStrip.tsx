@@ -1,5 +1,5 @@
-import { Container } from "@/components/primitives/container/Container";
-import { Grid } from "@/components/primitives/grid/Grid";
+import { Container } from "@/components/primitives/container/container";
+import { Grid } from "@/components/primitives/grid/grid";
 
 export function IntroStrip() {
   return (

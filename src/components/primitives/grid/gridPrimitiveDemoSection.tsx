@@ -1,6 +1,6 @@
-import { Container } from "@/components/primitives/container/Container";
-import { Grid } from "@/components/primitives/grid/Grid";
-import { Segment } from "@/components/primitives/segment/Segment";
+import { Container } from "@/components/primitives/container/container";
+import { Grid } from "@/components/primitives/grid/grid";
+import { Segment } from "@/components/primitives/segment/segment";
 
 function DemoTile({
   title,

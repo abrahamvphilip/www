@@ -2,10 +2,10 @@
 
 import { useMemo, useState } from "react";
 
-import { ComponentShowcaseCard } from "@/components/docs/ComponentShowcaseCard";
+import { ComponentShowcaseCard } from "@/components/docs/componentShowcaseCard";
 import { componentRegistry } from "@/components/docs/registry";
-import { Container } from "@/components/primitives/container/Container";
-import { Segment } from "@/components/primitives/segment/Segment";
+import { Container } from "@/components/primitives/container/container";
+import { Segment } from "@/components/primitives/segment/segment";
 
 const PAGE_SECTIONS = [
   { id: "installation", label: "Installation" },

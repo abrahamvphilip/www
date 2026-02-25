@@ -1,6 +1,6 @@
 import { homeProblemStrip } from "@/data/home";
 
-import { Container } from "@/components/primitives/container/Container";
+import { Container } from "@/components/primitives/container/container";
 
 const problemMedia =
 	"https://www.figma.com/api/mcp/asset/1376c098-877b-41d4-8093-71f870e626b3";

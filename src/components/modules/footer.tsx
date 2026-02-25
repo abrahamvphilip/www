@@ -2,11 +2,11 @@ import Link from "next/link";
 
 import { homeFooter } from "@/data/home";
 
-import { Container } from "@/components/primitives/container/Container";
-import { Segment } from "@/components/primitives/segment/Segment";
-import { BrandMark } from "@/components/ui/BrandMark";
-import { FooterArcBackdrop } from "@/components/ui/FooterArcBackdrop";
-import { PlaceholderMedia } from "@/components/ui/PlaceholderMedia";
+import { Container } from "@/components/primitives/container/container";
+import { Segment } from "@/components/primitives/segment/segment";
+import { BrandMark } from "@/components/ui/brandMark";
+import { FooterArcBackdrop } from "@/components/ui/footerArcBackdrop";
+import { PlaceholderMedia } from "@/components/ui/placeholderMedia";
 
 export function Footer() {
   const footer = homeFooter;

@@ -1,15 +1,15 @@
-import { BuildingBlocksSection } from "@/components/modules/BuildingBlocksSection";
-import { CareersSection } from "@/components/modules/CareersSection";
-import { CtaSection } from "@/components/modules/CtaSection";
-import { FaqSection } from "@/components/modules/FaqSection";
-import { Footer } from "@/components/modules/Footer";
+import { BuildingBlocksSection } from "@/components/modules/buildingBlocksSection";
+import { CareersSection } from "@/components/modules/careersSection";
+import { CtaSection } from "@/components/modules/ctaSection";
+import { FaqSection } from "@/components/modules/faqSection";
+import { Footer } from "@/components/modules/footer";
 import { Forge } from "@/components/modules/forge";
-import { Hero } from "@/components/modules/Hero";
-import { IntroStrip } from "@/components/modules/IntroStrip";
-import { Navbar } from "@/components/modules/Navbar";
-import { NexusSection } from "@/components/modules/NexusSection";
-import { ProblemStrip } from "@/components/modules/ProblemStrip";
-import { ResourcesSection } from "@/components/modules/ResourcesSection";
+import { Hero } from "@/components/modules/hero";
+import { IntroStrip } from "@/components/modules/introStrip";
+import { Navbar } from "@/components/modules/navbar";
+import { NexusSection } from "@/components/modules/nexusSection";
+import { ProblemStrip } from "@/components/modules/problemStrip";
+import { ResourcesSection } from "@/components/modules/resourcesSection";
 
 export default function Home() {
 	return (

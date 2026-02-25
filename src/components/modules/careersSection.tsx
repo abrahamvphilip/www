@@ -1,9 +1,9 @@
 import { homeCareers } from "@/data/home";
 
-import { Container } from "@/components/primitives/container/Container";
-import { Segment } from "@/components/primitives/segment/Segment";
-import { ButtonChip } from "@/components/ui/ButtonChip";
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Container } from "@/components/primitives/container/container";
+import { Segment } from "@/components/primitives/segment/segment";
+import { ButtonChip } from "@/components/ui/buttonChip";
+import { SectionHeading } from "@/components/ui/sectionHeading";
 
 function OpeningCard({ title, engagement, location }: (typeof homeCareers.openings)[number]) {
   return (

@@ -3,9 +3,9 @@ import type { ReactNode } from "react";
 import { toSelect } from "@/components/docs/controlState";
 import { docsSourcePaths } from "@/components/docs/sourcePaths";
 import type { ComponentDocEntry } from "@/components/docs/types";
-import { Container } from "@/components/primitives/container/Container";
-import { Grid } from "@/components/primitives/grid/Grid";
-import { Segment } from "@/components/primitives/segment/Segment";
+import { Container } from "@/components/primitives/container/container";
+import { Grid } from "@/components/primitives/grid/grid";
+import { Segment } from "@/components/primitives/segment/segment";
 
 const ELEMENT_TAGS = ["div", "section", "article"];
 const GRID_DIRECTION_OPTIONS = ["ltr", "rtl"];
@@ -114,7 +114,7 @@ export const componentRegistry: ComponentDocEntry[] = [
     id: "grid",
     group: "primitives",
     title: "Grid",
-    importPath: "@/components/primitives/grid/Grid",
+    importPath: "@/components/primitives/grid/grid",
     sourcePath: docsSourcePaths.grid,
     description: "Token-based row/column primitive with responsive span math, gutter handling, and optional offsets.",
     props: [
@@ -262,7 +262,7 @@ export const componentRegistry: ComponentDocEntry[] = [
     id: "container",
     group: "primitives",
     title: "Container",
-    importPath: "@/components/primitives/container/Container",
+    importPath: "@/components/primitives/container/container",
     sourcePath: docsSourcePaths.container,
     description: "Token-driven horizontal layout wrapper that applies responsive gutters and page width limits.",
     props: [
@@ -310,7 +310,7 @@ export const componentRegistry: ComponentDocEntry[] = [
     id: "segment",
     group: "primitives",
     title: "Segment",
-    importPath: "@/components/primitives/segment/Segment",
+    importPath: "@/components/primitives/segment/segment",
     sourcePath: docsSourcePaths.segment,
     description: "Token-driven vertical rhythm wrapper that manages top/bottom spacing across viewport ranges.",
     props: [

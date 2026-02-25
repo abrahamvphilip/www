@@ -1,4 +1,4 @@
-import { Container } from "@/components/primitives/container/Container";
+import { Container } from "@/components/primitives/container/container";
 
 export default function ObservatoryLoading() {
   return (

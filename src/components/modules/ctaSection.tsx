@@ -1,8 +1,8 @@
 import { homeCta } from "@/data/home";
 
-import { Container } from "@/components/primitives/container/Container";
-import { Segment } from "@/components/primitives/segment/Segment";
-import { ButtonChip } from "@/components/ui/ButtonChip";
+import { Container } from "@/components/primitives/container/container";
+import { Segment } from "@/components/primitives/segment/segment";
+import { ButtonChip } from "@/components/ui/buttonChip";
 
 export function CtaSection() {
   const cta = homeCta;

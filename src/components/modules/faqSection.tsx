@@ -1,7 +1,7 @@
 import { homeFaq } from "@/data/home";
-import { Container } from "@/components/primitives/container/Container";
-import { Segment } from "@/components/primitives/segment/Segment";
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Container } from "@/components/primitives/container/container";
+import { Segment } from "@/components/primitives/segment/segment";
+import { SectionHeading } from "@/components/ui/sectionHeading";
 
 export function FaqSection() {
   const faq = homeFaq;

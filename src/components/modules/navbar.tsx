@@ -1,9 +1,9 @@
 import Link from "next/link";
 
 import { homeNav } from "@/data/home";
-import { Container } from "@/components/primitives/container/Container";
-import { BrandMark } from "@/components/ui/BrandMark";
-import { ButtonChip } from "@/components/ui/ButtonChip";
+import { Container } from "@/components/primitives/container/container";
+import { BrandMark } from "@/components/ui/brandMark";
+import { ButtonChip } from "@/components/ui/buttonChip";
 
 export function Navbar() {
   const nav = homeNav;

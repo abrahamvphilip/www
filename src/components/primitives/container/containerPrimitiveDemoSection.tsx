@@ -1,5 +1,5 @@
-import { Container } from "@/components/primitives/container/Container";
-import { Segment } from "@/components/primitives/segment/Segment";
+import { Container } from "@/components/primitives/container/container";
+import { Segment } from "@/components/primitives/segment/segment";
 
 export function ContainerPrimitiveDemoSection() {
   return (

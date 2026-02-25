@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { ComponentDocsPage } from "@/components/docs/ComponentDocsPage";
+import { ComponentDocsPage } from "@/components/docs/componentDocsPage";
 import { loadSourceFiles } from "@/components/docs/loadSourceFiles";
 import { docsSourcePathList } from "@/components/docs/sourcePaths";
 
