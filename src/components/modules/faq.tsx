@@ -7,6 +7,8 @@ import { homeFaq } from "@/data/home";
 import { Container } from "@/components/primitives/container/container";
 import { Grid } from "@/components/primitives/grid/grid";
 import { Segment } from "@/components/primitives/segment/segment";
+import { RevealGroup } from "@/components/ui/reveal/revealGroup";
+import { RevealText } from "@/components/ui/reveal/revealText";
 
 function FaqChevron({ isOpen }: { isOpen: boolean }) {
 	return (
@@ -133,17 +135,36 @@ export function Faq() {
 				<div className="mx-auto flex w-full flex-col gap-14">
 					<div className="flex w-full">
 						<Grid mobile={12} tablet={12} desktop={4} offsetLeftAlt={1}>
-							<div className="w-full">
+							<RevealGroup className="w-full">
 								<div className="h-7">
-									<p className="font-sans text-(length:--text-xs-12px) font-medium uppercase leading-4 tracking-[0.5px] text-(--bunker-550)">
+									<RevealText
+										as="p"
+										phase="eyebrow"
+										split="none"
+										className="font-sans text-(length:--text-xs-12px) font-medium uppercase leading-4 tracking-[0.5px] text-(--bunker-550)"
+									>
 										{faq.header.eyebrow}
-									</p>
+									</RevealText>
 								</div>
 								<div className="flex flex-col gap-0 pt-3 font-display text-(length:--text-4xl-36px) font-light leading-10 tracking-[-0.36px]">
-									<h2 className="text-(--bunker-800)">{faq.header.title}</h2>
-									<p className="text-(--bunker-325)">{faq.header.subtitle}</p>
+									<RevealText
+										as="h2"
+										phase="heading"
+										split="words"
+										className="text-(--bunker-800)"
+									>
+										{faq.header.title}
+									</RevealText>
+									<RevealText
+										as="p"
+										phase="subheading"
+										split="words"
+										className="text-(--bunker-325)"
+									>
+										{faq.header.subtitle}
+									</RevealText>
 								</div>
-							</div>
+							</RevealGroup>
 						</Grid>
 					</div>
 					<div className="flex flex-col gap-14 pb-20">

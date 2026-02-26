@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Fraunces, IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
 
 import { Devtools } from "@/devtools/devtools";
+import { LenisProvider } from "@/components/ui/lenisProvider";
 
 import "./globals.css";
 
@@ -47,7 +48,7 @@ export default function RootLayout({
 			className={`${ibmPlexSans.variable} ${ibmPlexMono.variable} ${fraunces.variable} overflow-x-clip`}
 		>
 			<body className="font-sans antialiased">
-				{children}
+				<LenisProvider>{children}</LenisProvider>
 				{process.env.NODE_ENV === "development" ? <Devtools /> : null}
 			</body>
 		</html>

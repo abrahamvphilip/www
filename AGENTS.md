@@ -87,6 +87,10 @@ This file is the canonical folder tree and structure contract for this repo.
 │   │       ├── decorGrid.tsx
 │   │       ├── footerArcBackdrop.tsx
 │   │       ├── placeholderMedia.tsx
+│   │       ├── reveal/
+│   │       │   ├── revealGroup.tsx
+│   │       │   ├── revealText.tsx
+│   │       │   └── timings.ts
 │   │       ├── sectionHeading.tsx
 │   │       └── statBadge.tsx
 │   └── data/
@@ -106,6 +110,7 @@ This file is the canonical folder tree and structure contract for this repo.
 - `src/components/primitives/segment` contains the token-driven section-spacing wrapper primitive and its demo.
 - `src/components/primitives/grid` contains the reusable token-driven grid primitive and its usage demo.
 - `src/components/ui` contains reusable primitives and presentational building blocks.
+- `src/components/ui/reveal` contains GSAP-based, reusable viewport-triggered text reveal primitives and timing profiles.
 - `src/components/modules` contains composed website sections built from `ui` primitives.
 - `src/data/<page>.ts` contains page data/content objects (currently `src/data/home.ts`).
 - `rules.md` contains the canonical implementation rules for pixel-perfect Figma-to-code work.

@@ -2,6 +2,8 @@ import { homeResources } from "@/data/home";
 
 import { Container } from "@/components/primitives/container/container";
 import { Segment } from "@/components/primitives/segment/segment";
+import { RevealGroup } from "@/components/ui/reveal/revealGroup";
+import { RevealText } from "@/components/ui/reveal/revealText";
 
 function ArrowRightIcon() {
 	return (
@@ -136,17 +138,36 @@ export function Blogs() {
 			>
 				{/* Header */}
 				<div className="flex items-end gap-3 max-tablet:flex-col max-tablet:items-start">
-					<div className="flex w-full max-w-[565px] shrink-0 flex-col gap-3 max-tablet:shrink max-tablet:max-w-full">
+					<RevealGroup className="flex w-full max-w-[565px] shrink-0 flex-col gap-3 max-tablet:shrink max-tablet:max-w-full">
 						<div className="flex h-7 items-center">
-							<p className="font-sans text-(length:--text-xs-12px) font-medium uppercase leading-4 tracking-[0.5px] text-(--bunker-550)">
+							<RevealText
+								as="p"
+								phase="eyebrow"
+								split="none"
+								className="font-sans text-(length:--text-xs-12px) font-medium uppercase leading-4 tracking-[0.5px] text-(--bunker-550)"
+							>
 								{resources.header.eyebrow}
-							</p>
+							</RevealText>
 						</div>
 						<div className="font-display text-(length:--text-4xl-36px) font-light leading-10 tracking-[-0.36px] max-tablet:leading-8">
-							<p className="text-(--bunker-800)">{resources.header.title}</p>
-							<p className="text-(--bunker-325)">{resources.header.subtitle}</p>
+							<RevealText
+								as="p"
+								phase="heading"
+								split="words"
+								className="text-(--bunker-800)"
+							>
+								{resources.header.title}
+							</RevealText>
+							<RevealText
+								as="p"
+								phase="subheading"
+								split="words"
+								className="text-(--bunker-325)"
+							>
+								{resources.header.subtitle}
+							</RevealText>
 						</div>
-					</div>
+					</RevealGroup>
 
 					<div className="flex flex-1 items-start justify-end pt-3 max-tablet:justify-start">
 						<a

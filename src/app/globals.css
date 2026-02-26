@@ -31,6 +31,23 @@ body {
 	overflow-x: clip;
 }
 
+html.lenis,
+html.lenis body {
+	height: auto;
+}
+
+.lenis.lenis-smooth {
+	scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+	overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+	overflow: clip;
+}
+
 @layer components {
 	[data-grid-col] {
 		--_span: var(--span-m, var(--grid-column-count));

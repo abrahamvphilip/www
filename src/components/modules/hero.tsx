@@ -1,6 +1,8 @@
 import { homeHero } from "@/data/home";
 import { Container } from "@/components/primitives/container/container";
 import { Grid } from "@/components/primitives/grid/grid";
+import { RevealGroup } from "@/components/ui/reveal/revealGroup";
+import { RevealText } from "@/components/ui/reveal/revealText";
 import { Segment } from "../primitives/segment/segment";
 
 export function Hero() {
@@ -34,14 +36,24 @@ export function Hero() {
 								{hero.stats[1].label}
 							</span>
 						</div>
-						<div className="space-y-0 pt-5">
-							<h1 className="font-display text-(length:--text-6xl-60px) font-light leading-[40px] desktop:leading-[68px] tracking-[-0.6px] text-(--alabaster-25) max-desktop:leading-[52px] max-tablet:leading-[36px]">
+						<RevealGroup className="space-y-0 pt-5" threshold={0} rootMargin="0px">
+							<RevealText
+								as="h1"
+								phase="heading"
+								split="words"
+								className="font-display text-(length:--text-6xl-60px) font-light leading-[40px] desktop:leading-[68px] tracking-[-0.6px] text-(--alabaster-25) max-desktop:leading-[52px] max-tablet:leading-[36px]"
+							>
 								{hero.heading}
-							</h1>
-							<p className="font-display text-(length:--text-6xl-60px) font-light leading-[40px] desktop:leading-[68px] tracking-[-0.6px] text-(--bunker-325) max-desktop:leading-[52px] max-tablet:leading-[36px]">
+							</RevealText>
+							<RevealText
+								as="p"
+								phase="subheading"
+								split="words"
+								className="font-display text-(length:--text-6xl-60px) font-light leading-[40px] desktop:leading-[68px] tracking-[-0.6px] text-(--bunker-325) max-desktop:leading-[52px] max-tablet:leading-[36px]"
+							>
 								{hero.subheading}
-							</p>
-						</div>
+							</RevealText>
+						</RevealGroup>
 					</Grid>
 				</div>
 			</Container>

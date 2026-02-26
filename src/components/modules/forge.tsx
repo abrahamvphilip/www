@@ -3,6 +3,8 @@ import { homeForge } from "@/data/home";
 import { Container } from "@/components/primitives/container/container";
 import { Grid } from "@/components/primitives/grid/grid";
 import { Segment } from "@/components/primitives/segment/segment";
+import { RevealGroup } from "@/components/ui/reveal/revealGroup";
+import { RevealText } from "@/components/ui/reveal/revealText";
 
 export function Forge() {
 	const forge = homeForge;
@@ -15,20 +17,44 @@ export function Forge() {
 			>
 				<Grid mobile={12} tablet={12} desktop={4}>
 					<div className="flex h-auto flex-col justify-between desktop:h-[854px]">
-						<div className="flex w-full max-w-[565px] flex-col gap-6 pb-16 pt-10 desktop:pt-20 max-tablet:max-w-full max-tablet:pb-8">
+						<RevealGroup className="flex w-full max-w-[565px] flex-col gap-6 pb-16 pt-10 desktop:pt-20 max-tablet:max-w-full max-tablet:pb-8">
 							<div className="flex flex-col gap-3">
-								<p className="h-7 font-sans text-xs font-medium uppercase leading-4 tracking-[0.5px] text-(--bunker-550)">
+								<RevealText
+									as="p"
+									phase="eyebrow"
+									split="none"
+									className="h-7 font-sans text-xs font-medium uppercase leading-4 tracking-[0.5px] text-(--bunker-550)"
+								>
 									{forge.header.eyebrow}
-								</p>
+								</RevealText>
 								<div className="font-display text-(length:--text-4xl-36px) font-light leading-10 tracking-[-0.36px] max-tablet:leading-8">
-									<p className="text-(--bunker-800)">{forge.header.title}</p>
-									<p className="text-(--bunker-325)">{forge.header.subtitle}</p>
+									<RevealText
+										as="p"
+										phase="heading"
+										split="words"
+										className="text-(--bunker-800)"
+									>
+										{forge.header.title}
+									</RevealText>
+									<RevealText
+										as="p"
+										phase="subheading"
+										split="words"
+										className="text-(--bunker-325)"
+									>
+										{forge.header.subtitle}
+									</RevealText>
 								</div>
 							</div>
-							<p className="w-full max-w-[566px] whitespace-pre-line font-sans text-(length:--text-xl-20px) font-normal leading-7 tracking-[-0.2px] text-(--gallery-550) max-tablet:max-w-full max-tablet:leading-6">
+							<RevealText
+								as="p"
+								phase="description"
+								split="lines"
+								className="w-full max-w-[566px] whitespace-pre-line font-sans text-(length:--text-xl-20px) font-normal leading-7 tracking-[-0.2px] text-(--gallery-550) max-tablet:max-w-full max-tablet:leading-6"
+							>
 								{forge.header.description}
-							</p>
-						</div>
+							</RevealText>
+						</RevealGroup>
 
 						<div className="flex w-full max-w-[565px] items-start gap-6 pb-16 max-tablet:max-w-full max-tablet:pb-8">
 							<button

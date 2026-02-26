@@ -3,6 +3,8 @@ import { homeBuildingBlocks } from "@/data/home";
 import { Container } from "@/components/primitives/container/container";
 import { Segment } from "@/components/primitives/segment/segment";
 import { PlaceholderMedia } from "@/components/ui/placeholderMedia";
+import { RevealGroup } from "@/components/ui/reveal/revealGroup";
+import { RevealText } from "@/components/ui/reveal/revealText";
 import { SectionHeading } from "@/components/ui/sectionHeading";
 
 export function BuildingBlocksSection() {
@@ -15,18 +17,25 @@ export function BuildingBlocksSection() {
 		>
 			<Segment>
 				<Container className="space-y-[56px] max-tablet:space-y-8">
-					<div className="grid gap-10 desktop:grid-cols-[565px_565px] desktop:justify-between max-tablet:gap-6">
+					<RevealGroup className="grid gap-10 desktop:grid-cols-[565px_565px] desktop:justify-between max-tablet:gap-6">
 						<SectionHeading
 							eyebrow={blocks.header.eyebrow}
 							title={blocks.header.title}
 							subtitle={blocks.header.subtitle}
+							animated
+							useParentRevealGroup
 						/>
 						<div className="pt-10 max-tablet:pt-4">
-							<p className="max-w-[566px] font-sans text-xl font-normal leading-[1.4] tracking-[-0.2px] text-bunker-675 max-tablet:max-w-full">
+							<RevealText
+								as="p"
+								phase="description"
+								split="lines"
+								className="max-w-[566px] font-sans text-xl font-normal leading-[1.4] tracking-[-0.2px] text-bunker-675 max-tablet:max-w-full"
+							>
 								{blocks.header.description}
-							</p>
+							</RevealText>
 						</div>
-					</div>
+					</RevealGroup>
 
 					<div>
 						<div className="relative h-auto desktop:h-[1169px]">
