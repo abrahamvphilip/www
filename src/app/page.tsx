@@ -24,8 +24,8 @@ export default function Home() {
 			<Forge />
 			<Nexus />
 			<BuildingBlocksSection />
-			<Careers />
-			<Blogs />
+			{/* <Careers /> */}
+			{/* <Blogs /> */}
 			<Faq />
 			<PageCta />
 			<Footer />

@@ -17,10 +17,10 @@ export function Nexus() {
 						desktop={6}
 						className="flex justify-start desktop:pl-0!"
 					>
-						<div className="relative h-[300px] w-full bg-(--gallery-100) desktop:h-[854px] max-tablet:h-[220px]">
+						<div className="relative aspect-4/3 w-full overflow-hidden rounded-lg bg-(--gallery-100) desktop:aspect-auto desktop:h-[854px]">
 							{/*
                 <Image
-                  src={forgeVisual}
+                  src={nexusVisual}
                   alt=""
                   fill
                   className="object-contain"
@@ -31,7 +31,7 @@ export function Nexus() {
 
 					<Grid mobile={12} tablet={12} desktop={4} offsetLeftAlt={0}>
 						<div className="flex h-auto w-full flex-col justify-between desktop:h-[854px]">
-							<div className="flex w-full max-w-[565px] flex-col gap-6 pb-16 pt-20 max-tablet:max-w-full max-tablet:pb-8 max-tablet:pt-10">
+							<div className="flex w-full max-w-[565px] flex-col gap-6 pb-16 pt-10 desktop:pt-20 max-tablet:max-w-full max-tablet:pb-8">
 								<div className="flex flex-col gap-3">
 									<p className="h-7 font-sans text-(length:--text-xs-12px) font-medium uppercase leading-4 tracking-[0.5px] text-(--bunker-550)">
 										{nexus.header.eyebrow}

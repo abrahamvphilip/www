@@ -48,7 +48,7 @@ export default function RootLayout({
 		>
 			<body className="font-sans antialiased">
 				{children}
-				{/* {process.env.NODE_ENV === "development" ? <Devtools /> : null} */}
+				{process.env.NODE_ENV === "development" ? <Devtools /> : null}
 			</body>
 		</html>
 	);

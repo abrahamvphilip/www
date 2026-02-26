@@ -88,7 +88,7 @@
 	--bp-min-tablet: var(--bp-min-720);
 	--bp-min-desktop: var(--bp-min-1080);
 
-	--segment-padding-mobile: calc(var(--container-gutter-mobile) * 3);
+	--segment-padding-mobile: calc(var(--container-gutter-mobile) * 5);
 	--segment-padding: 144px;
 
 	/* Fluid layout tokens (clamp interpolation from mobile to desktop) */

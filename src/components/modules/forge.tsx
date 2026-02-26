@@ -11,11 +11,11 @@ export function Forge() {
 		<Segment className="p-0!">
 			<Container
 				as={"section"}
-				className="flex flex-col justify-between px-10 pt-[120px] desktop:flex-row max-tablet:px-4 max-tablet:pt-16"
+				className="flex flex-col-reverse gap-5 px-10 pt-[120px] desktop:flex-row desktop:justify-between desktop:gap-0 max-tablet:px-4 max-tablet:pt-16"
 			>
 				<Grid mobile={12} tablet={12} desktop={4}>
 					<div className="flex h-auto flex-col justify-between desktop:h-[854px]">
-						<div className="flex w-full max-w-[565px] flex-col gap-6 pb-16 pt-20 max-tablet:max-w-full max-tablet:pb-8 max-tablet:pt-10">
+						<div className="flex w-full max-w-[565px] flex-col gap-6 pb-16 pt-10 desktop:pt-20 max-tablet:max-w-full max-tablet:pb-8">
 							<div className="flex flex-col gap-3">
 								<p className="h-7 font-sans text-xs font-medium uppercase leading-4 tracking-[0.5px] text-(--bunker-550)">
 									{forge.header.eyebrow}
@@ -64,7 +64,7 @@ export function Forge() {
 					desktop={6}
 					className="flex justify-end desktop:pr-0!"
 				>
-					<div className="relative h-[854px] w-full bg-(--gallery-100) max-desktop:h-[400px] max-tablet:h-[280px]">
+					<div className="relative aspect-4/3 w-full bg-(--gallery-100) rounded-lg overflow-hidden desktop:aspect-auto desktop:h-[854px]">
 						{/*
                 <Image
                   src={forgeVisual}

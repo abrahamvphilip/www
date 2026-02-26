@@ -38,6 +38,8 @@ body {
 		padding-inline: calc(var(--_gutter) / 2);
 		width: calc((var(--_span) / var(--grid-column-count)) * 100%);
 		min-width: 0;
+		margin-left: 0;
+		margin-right: 0;
 	}
 
 	@media (min-width: 720px) {
@@ -52,6 +54,8 @@ body {
 				--span-d,
 				var(--span-t, var(--span-m, var(--grid-column-count)))
 			);
+			margin-left: var(--grid-ml, 0);
+			margin-right: var(--grid-mr, 0);
 		}
 	}
 

@@ -34,6 +34,8 @@ This file is the canonical folder tree and structure contract for this repo.
 │   │   │   ├── loading.tsx
 │   │   │   └── page.tsx
 │   │   ├── page.tsx
+│   │   ├── waitlist/
+│   │   │   └── page.tsx
 │   │   └── tokens.css
 │   ├── devtools/
 │   │   ├── devtools.tsx
@@ -96,6 +98,7 @@ This file is the canonical folder tree and structure contract for this repo.
 ## Folder Rules
 
 - `src/devtools` contains local-only developer overlays and keyboard tooling.
+- `src/app/waitlist` contains the public waitlist/early-access signup page.
 - `src/app/o` contains the dev-only component observatory route.
 - `src/components/docs` contains local docs/playground infrastructure used by `/o`.
 - `src/components/primitives/_shared` contains shared token viewport/runtime helpers used by layout primitives.
