@@ -27,6 +27,8 @@ This file is the canonical folder tree and structure contract for this repo.
 │   └── window.svg
 ├── src/
 │   ├── app/
+│   │   ├── cookie/
+│   │   │   └── page.tsx
 │   │   ├── favicon.ico
 │   │   ├── globals.css
 │   │   ├── layout.tsx
@@ -34,6 +36,10 @@ This file is the canonical folder tree and structure contract for this repo.
 │   │   │   ├── loading.tsx
 │   │   │   └── page.tsx
 │   │   ├── page.tsx
+│   │   ├── privacy/
+│   │   │   └── page.tsx
+│   │   ├── tos/
+│   │   │   └── page.tsx
 │   │   ├── waitlist/
 │   │   │   └── page.tsx
 │   │   └── tokens.css
@@ -54,6 +60,7 @@ This file is the canonical folder tree and structure contract for this repo.
 │   │   │   ├── forge.tsx
 │   │   │   ├── hero.tsx
 │   │   │   ├── introStrip.tsx
+│   │   │   ├── legalPageShell.tsx
 │   │   │   ├── navbar.tsx
 │   │   │   ├── nexusSection.tsx
 │   │   │   ├── problemStrip.tsx
@@ -102,6 +109,9 @@ This file is the canonical folder tree and structure contract for this repo.
 ## Folder Rules
 
 - `src/devtools` contains local-only developer overlays and keyboard tooling.
+- `src/app/cookie` contains the public Cookie Policy legal page.
+- `src/app/privacy` contains the public Privacy Policy legal page.
+- `src/app/tos` contains the public Terms of Service legal page.
 - `src/app/waitlist` contains the public waitlist/early-access signup page.
 - `src/app/o` contains the dev-only component observatory route.
 - `src/components/docs` contains local docs/playground infrastructure used by `/o`.

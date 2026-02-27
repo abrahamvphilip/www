@@ -112,6 +112,16 @@ function FooterLinkGroup({
 	);
 }
 
+const POLICY_ROUTES: Record<string, string> = {
+	"Privacy Policy": "/privacy",
+	"Terms of Service": "/tos",
+	"Cookie Policy": "/cookie",
+};
+
+function policyLinkHref(label: string): string {
+	return POLICY_ROUTES[label] ?? "#";
+}
+
 export function Footer() {
 	const footer = homeFooter;
 
@@ -192,7 +202,7 @@ export function Footer() {
 							{footer.policyLinks.map((link) => (
 								<Link
 									key={link}
-									href="/legal"
+									href={policyLinkHref(link)}
 									className="font-sans text-(length:--text-sm-14px) font-normal leading-5 text-(--bunker-325)"
 								>
 									{link}
