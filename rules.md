@@ -161,6 +161,23 @@ Rules:
 
 ---
 
+## Icon Contract
+
+- All icons must use Hugeicons twotone variant (`@hugeicons-pro/core-twotone-rounded`).
+- Use `HugeiconsIcon` component from `@hugeicons/react` with `size={20}` as default.
+- Do not create custom SVG icon components. Always use Hugeicons library.
+- Import pattern:
+  ```tsx
+  import { HugeiconsIcon } from "@hugeicons/react";
+  import { IconName } from "@hugeicons-pro/core-twotone-rounded";
+  ```
+- Usage pattern:
+  ```tsx
+  <HugeiconsIcon icon={IconName} size={20} />
+  ```
+
+---
+
 ## Token Contract
 
 - `src/app/tokens.css` is the source of truth.
@@ -189,6 +206,99 @@ Required compatibility with primitive tokens:
   - weight
 
 If text wraps differently, fix width/line-breaks first. Do not rewrite copy.
+
+---
+
+## Text Reveal Effect Contract
+
+- Use `RevealGroup` and `RevealText` components for animated text reveals.
+- Import pattern:
+  ```tsx
+  import { RevealGroup } from "@/components/ui/reveal/revealGroup";
+  import { RevealText } from "@/components/ui/reveal/revealText";
+  ```
+- `RevealGroup` wraps related text elements that animate together.
+- `RevealText` props:
+  - `as`: HTML element type ("p", "h1", "span", etc.)
+  - `phase`: Animation phase ("eyebrow", "heading", "subheading", "description")
+  - `split`: How to split text for animation ("none", "words", "lines")
+  - `className`: Styling classes
+- Usage pattern:
+  ```tsx
+  <RevealGroup className="flex flex-col gap-3">
+    <RevealText as="p" phase="eyebrow" split="none" className="...">
+      {eyebrowText}
+    </RevealText>
+    <RevealText as="p" phase="heading" split="words" className="...">
+      {headingText}
+    </RevealText>
+    <RevealText as="p" phase="description" split="lines" className="...">
+      {descriptionText}
+    </RevealText>
+  </RevealGroup>
+  ```
+- Apply to section headers, hero text, and prominent copy blocks.
+
+---
+
+## Image Reveal Effect Contract
+
+- Use `RevealImage` component for all images across the website.
+- All images have a subtle zoom-out animation triggered on scroll into view.
+- Default behavior: starts at scale 1.5, animates to scale 1.0 over 500ms with expo.out easing.
+- Import pattern:
+  ```tsx
+  import { RevealImage } from "@/components/ui/reveal/revealImage";
+  ```
+- `RevealImage` props:
+  - `wrapperClassName`: Class name for the wrapper div (positioning, sizing)
+  - `wrapperStyle`: Inline styles for the wrapper div
+  - `imageClassName`: Class name for the Image element (object-fit, etc.)
+  - `duration`: Animation duration in milliseconds (default: 300)
+  - `startScale`: Starting scale factor (default: 1.15)
+  - `delay`: Optional delay before animation starts (in seconds)
+  - All standard `next/image` props are supported (`src`, `alt`, `fill`, `sizes`, `priority`, etc.)
+- Usage pattern for fill images:
+  ```tsx
+  <RevealImage
+    src={visualAsset}
+    alt="Description"
+    fill
+    wrapperClassName="relative aspect-4/3 w-full rounded-lg"
+    imageClassName="object-contain"
+    placeholder="blur"
+    duration={500}
+    startScale={1.5}
+  />
+  ```
+- Usage pattern for absolute positioned background images:
+  ```tsx
+  <RevealImage
+    src={bgImage}
+    alt=""
+    fill
+    wrapperClassName="absolute inset-0"
+    wrapperStyle={{ position: "absolute" }}
+    imageClassName="object-cover"
+    duration={500}
+    startScale={1.5}
+  />
+  ```
+- The component respects `prefers-reduced-motion` and skips animation if enabled.
+- Can work standalone or inside a `RevealGroup` for coordinated animations.
+- Apply to all section images, hero backgrounds, feature visuals, and decorative images.
+- **Transform conflict caveat**: Do NOT use transform classes (e.g., `-translate-x-1/2`) on `wrapperClassName`. The component applies `transform: scale()` via inline style which overrides Tailwind transform classes. If centering with transforms is needed, wrap `RevealImage` in an outer div:
+  ```tsx
+  <div className="absolute left-1/2 top-0 h-full w-[40%] -translate-x-1/2">
+    <RevealImage
+      src={image}
+      alt=""
+      fill
+      wrapperClassName="h-full w-full"
+      imageClassName="object-contain"
+    />
+  </div>
+  ```
 
 ---
 

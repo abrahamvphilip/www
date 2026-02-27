@@ -1,0 +1,95 @@
+# aion AI Infrastructure - robots.txt
+# https://aion.ai
+
+# Allow all search engines and AI bots for maximum GEO visibility
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /devtools/
+
+# Google
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Bing / Microsoft Copilot
+User-agent: Bingbot
+Allow: /
+
+User-agent: msnbot
+Allow: /
+
+# AI Search Engines (Critical for GEO - Generative Engine Optimization)
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+
+# OpenAI / ChatGPT
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# Anthropic / Claude
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Cohere
+User-agent: cohere-ai
+Allow: /
+
+# Common Crawl (used by many AI systems)
+User-agent: CCBot
+Allow: /
+
+# Meta AI
+User-agent: FacebookBot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+# Apple
+User-agent: Applebot
+Allow: /
+
+# Brave Search (used by Claude)
+User-agent: Brave
+Allow: /
+
+# DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Sitemap location
+Sitemap: https://aion.ai/sitemap.xml
+
+# Host
+Host: https://aion.ai

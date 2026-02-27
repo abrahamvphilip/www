@@ -9,9 +9,12 @@ import {
 } from "@/components/modules/legalPageShell";
 
 export const metadata: Metadata = {
-	title: "Terms of Service | aion",
+	title: "Terms of Service - GPU Cloud Platform Agreement",
 	description:
-		"Terms of Service for AION Technologies Inc. GPU compute platform and services.",
+		"Terms of Service for aion's enterprise GPU cloud platform. Review our service agreement covering GPU compute, AI infrastructure, billing, data processing, and acceptable use policies.",
+	alternates: {
+		canonical: "https://aion.ai/tos",
+	},
 };
 
 export default function TermsOfServicePage() {
@@ -24,19 +27,18 @@ export default function TermsOfServicePage() {
 			<LegalSection title="1. Acceptance of Terms">
 				<p>
 					By accessing or using the AION services operated by AION Technologies
-					Inc. ("AION", "we", "us", or "our"), including our marketing website
-					(aion.xyz) and GPU compute platform (console.aion.xyz) (collectively,
-					the "Services"), you agree to be bound by these Terms of Service
-					("Terms").
+					Inc. (&quot;AION&quot;, &quot;we&quot;, &quot;us&quot;, or
+					&quot;our&quot;), including our marketing website (aion.xyz) and GPU
+					compute platform (console.aion.xyz) (collectively, the
+					&quot;Services&quot;), you agree to be bound by these Terms of Service
+					(&quot;Terms&quot;).
 				</p>
 				<p>
 					If you do not agree to these Terms, you must not use our Services.
 				</p>
 
 				<LegalSubSection title="1.1 Essential Third-Party Services">
-					<p>
-						By using our Services, you acknowledge and agree that:
-					</p>
+					<p>By using our Services, you acknowledge and agree that:</p>
 					<p>
 						<strong className="text-(--bunker-675)">
 							Marketing Website (aion.xyz):
@@ -280,12 +282,12 @@ export default function TermsOfServicePage() {
 				<LegalSubSection title="6.1 Privacy Policies">
 					<p>Your use of our Platform is governed by:</p>
 					<p>
-						Our <LegalLink href="/privacy">Privacy Policy</LegalLink> –
-						detailing data collection and use
+						Our <LegalLink href="/privacy">Privacy Policy</LegalLink> – detailing
+						data collection and use
 					</p>
 					<p>
-						Our <LegalLink href="/cookie">Cookie Policy</LegalLink> –
-						explaining cookie usage and tracking
+						Our <LegalLink href="/cookie">Cookie Policy</LegalLink> – explaining
+						cookie usage and tracking
 					</p>
 					<p>
 						By using the Services, you consent to all data practices described
@@ -477,9 +479,7 @@ export default function TermsOfServicePage() {
 				</LegalSubSection>
 
 				<LegalSubSection title="11.2 Arbitration Agreement">
-					<p>
-						Any disputes shall be resolved through binding arbitration:
-					</p>
+					<p>Any disputes shall be resolved through binding arbitration:</p>
 					<LegalList
 						items={[
 							"Administered by JAMS under its Streamlined Arbitration Rules",
@@ -642,9 +642,7 @@ export default function TermsOfServicePage() {
 					<strong className="text-(--bunker-675)">General Support</strong>
 					<br />
 					Email:{" "}
-					<LegalLink href="mailto:support@aion.xyz">
-						support@aion.xyz
-					</LegalLink>
+					<LegalLink href="mailto:support@aion.xyz">support@aion.xyz</LegalLink>
 					<br />
 					Platform: Support Dashboard
 				</p>
@@ -652,9 +650,7 @@ export default function TermsOfServicePage() {
 					<strong className="text-(--bunker-675)">Billing Inquiries</strong>
 					<br />
 					Email:{" "}
-					<LegalLink href="mailto:billing@aion.xyz">
-						billing@aion.xyz
-					</LegalLink>
+					<LegalLink href="mailto:billing@aion.xyz">billing@aion.xyz</LegalLink>
 				</p>
 			</LegalSection>
 

@@ -1,0 +1,140 @@
+.loaderContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.loaderGhost {
+	transform: translate(0px, -25px);
+	z-index: -1;
+	animation: loaderOpacity 4s infinite ease-in-out;
+}
+
+@keyframes loaderOpacity {
+	0% {
+		opacity: 1;
+		scale: 1;
+	}
+	50% {
+		opacity: 0.5;
+		scale: 0.9;
+	}
+	100% {
+		opacity: 1;
+		scale: 1;
+	}
+}
+
+@keyframes loaderStrobe {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	51% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes loaderBounce {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-10px);
+	}
+}
+
+@keyframes loaderStrobeAccent {
+	0%,
+	50%,
+	100% {
+		fill: var(--orange-roughy-225);
+	}
+	25%,
+	75% {
+		fill: var(--eucalyptus-675);
+	}
+}
+
+@keyframes loaderStrobeGreen {
+	0%,
+	50%,
+	100% {
+		fill: var(--eucalyptus-225);
+	}
+	25%,
+	75% {
+		fill: var(--eucalyptus-325);
+	}
+}
+
+.loaderMain {
+	animation: loaderBounce 4s infinite ease-in-out;
+}
+
+.loaderStrobeLed {
+	animation: loaderStrobe 0.5s infinite;
+}
+
+.loaderStrobeGreen {
+	animation: loaderStrobeGreen 0.8s infinite;
+}
+
+.loaderStrobeAccent {
+	animation: loaderStrobeAccent 0.8s infinite;
+	animation-delay: 3s;
+}
+
+/* Phase 1: Server rack rises and fades */
+@keyframes serverRackExit {
+	0% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+	70% {
+		transform: translateY(-40px);
+		opacity: 1;
+	}
+	100% {
+		transform: translateY(-40px);
+		opacity: 0;
+	}
+}
+
+@keyframes ghostFadeOut {
+	0% {
+		opacity: 0.5;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+.loaderRackExiting .loaderMain {
+	animation: serverRackExit 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.loaderRackExiting .loaderGhost {
+	animation: ghostFadeOut 0.4s ease-out forwards;
+}
+
+/* Phase 2: Wrapper slides up to reveal content */
+@keyframes wrapperSlideUp {
+	0% {
+		transform: translateY(0);
+	}
+	100% {
+		transform: translateY(-100vh);
+	}
+}
+
+.loaderWrapperSliding {
+	animation: wrapperSlideUp 0.7s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}

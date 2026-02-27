@@ -10,9 +10,12 @@ import {
 } from "@/components/modules/legalPageShell";
 
 export const metadata: Metadata = {
-	title: "Cookie Policy | aion",
+	title: "Cookie Policy - Tracking & Analytics Disclosure",
 	description:
-		"How AION Technologies Inc. uses cookies and similar tracking technologies.",
+		"aion's cookie policy explains how we use cookies, analytics (PostHog), and tracking technologies on our GPU cloud platform. GDPR and CCPA compliant consent management.",
+	alternates: {
+		canonical: "https://aion.ai/cookie",
+	},
 };
 
 export default function CookiePolicyPage() {

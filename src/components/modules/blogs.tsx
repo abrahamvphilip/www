@@ -1,79 +1,15 @@
+import { HugeiconsIcon } from "@hugeicons/react";
+import {
+	ArrowRight02Icon,
+	Book02Icon,
+} from "@hugeicons-pro/core-twotone-rounded";
+
 import { homeResources } from "@/data/home";
 
 import { Container } from "@/components/primitives/container/container";
 import { Segment } from "@/components/primitives/segment/segment";
 import { RevealGroup } from "@/components/ui/reveal/revealGroup";
 import { RevealText } from "@/components/ui/reveal/revealText";
-
-function ArrowRightIcon() {
-	return (
-		<svg
-			width="24"
-			height="24"
-			viewBox="0 0 24 24"
-			fill="none"
-			xmlns="http://www.w3.org/2000/svg"
-		>
-			<path
-				d="M14.43 5.93L20.5 12L14.43 18.07"
-				stroke="currentColor"
-				strokeWidth="1.5"
-				strokeMiterlimit="10"
-				strokeLinecap="round"
-				strokeLinejoin="round"
-			/>
-			<path
-				d="M3.5 12H20.33"
-				stroke="currentColor"
-				strokeWidth="1.5"
-				strokeMiterlimit="10"
-				strokeLinecap="round"
-				strokeLinejoin="round"
-			/>
-		</svg>
-	);
-}
-
-function BookIcon() {
-	return (
-		<svg
-			width="24"
-			height="24"
-			viewBox="0 0 24 24"
-			fill="none"
-			xmlns="http://www.w3.org/2000/svg"
-		>
-			<path
-				d="M22 16.74V4.67C22 3.47 21.02 2.58 19.83 2.68H19.77C17.67 2.86 14.48 3.93 12.7 5.05L12.53 5.16C12.24 5.34 11.76 5.34 11.47 5.16L11.22 5.01C9.44 3.9 6.26 2.84 4.16 2.67C2.97 2.57 2 3.47 2 4.66V16.74C2 17.7 2.78 18.6 3.74 18.72L4.03 18.76C6.2 19.05 9.55 20.15 11.47 21.2L11.51 21.22C11.78 21.37 12.21 21.37 12.47 21.22C14.39 20.16 17.75 19.05 19.93 18.76L20.26 18.72C21.22 18.6 22 17.7 22 16.74Z"
-				stroke="currentColor"
-				strokeWidth="1.5"
-				strokeLinecap="round"
-				strokeLinejoin="round"
-			/>
-			<path
-				d="M12 5.49V20.49"
-				stroke="currentColor"
-				strokeWidth="1.5"
-				strokeLinecap="round"
-				strokeLinejoin="round"
-			/>
-			<path
-				d="M7.75 8.49H5.5"
-				stroke="currentColor"
-				strokeWidth="1.5"
-				strokeLinecap="round"
-				strokeLinejoin="round"
-			/>
-			<path
-				d="M8.5 11.49H5.5"
-				stroke="currentColor"
-				strokeWidth="1.5"
-				strokeLinecap="round"
-				strokeLinejoin="round"
-			/>
-		</svg>
-	);
-}
 
 function ReadMoreButton({ className }: { className?: string }) {
 	return (
@@ -82,7 +18,7 @@ function ReadMoreButton({ className }: { className?: string }) {
 			className={`relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-[12px] border border-(--gallery-800)/8 bg-(--gallery-25) px-3 py-2 font-sans text-(length:--text-sm-14px) font-medium leading-5 text-(--gallery-800) shadow-[0px_1px_0.5px_0.05px_rgba(24,24,27,0.05)] ${className ?? ""}`.trim()}
 		>
 			<span>Read More</span>
-			<ArrowRightIcon />
+			<HugeiconsIcon icon={ArrowRight02Icon} size={20} />
 			<span className="pointer-events-none absolute -inset-px rounded-[inherit] shadow-[inset_0px_8px_16px_0px_rgba(255,255,255,0.02),inset_0px_-4px_8px_0px_rgba(0,0,0,0.02),inset_0px_2px_0px_0px_rgba(255,255,255,0.02)]" />
 		</button>
 	);
@@ -107,7 +43,7 @@ function ResourceCard({
 				*/}
 				<div className="relative flex items-center gap-1 p-2">
 					<span className="text-(--bunker-800)">
-						<BookIcon />
+						<HugeiconsIcon icon={Book02Icon} size={20} />
 					</span>
 					<p className="font-sans text-(length:--text-xs-12px) font-normal leading-4 text-(--bunker-800)">
 						{card.readTime}
@@ -175,7 +111,7 @@ export function Blogs() {
 							className="inline-flex items-center gap-2 font-sans text-(length:--text-sm-14px) font-medium leading-5 text-(--bunker-800)"
 						>
 							<span>{resources.cta}</span>
-							<ArrowRightIcon />
+							<HugeiconsIcon icon={ArrowRight02Icon} size={20} />
 						</a>
 					</div>
 				</div>
@@ -197,7 +133,7 @@ export function Blogs() {
 						<div className="px-2">
 							<div className="flex items-center gap-1">
 								<span className="text-(--bunker-800)">
-									<BookIcon />
+									<HugeiconsIcon icon={Book02Icon} size={20} />
 								</span>
 								<p className="font-sans text-(length:--text-xs-12px) font-normal leading-4 text-(--bunker-800)">
 									{resources.lead.readTime}

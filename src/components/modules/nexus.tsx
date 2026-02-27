@@ -1,17 +1,25 @@
+import Link from "next/link";
+
+import { HugeiconsIcon } from "@hugeicons/react";
+import { ArrowRight01Icon } from "@hugeicons-pro/core-stroke-rounded";
+
 import { homeNexus } from "@/data/home";
 
 import { Container } from "@/components/primitives/container/container";
 import { Grid } from "@/components/primitives/grid/grid";
 import { Segment } from "@/components/primitives/segment/segment";
 import { RevealGroup } from "@/components/ui/reveal/revealGroup";
+import { RevealImage } from "@/components/ui/reveal/revealImage";
 import { RevealText } from "@/components/ui/reveal/revealText";
+
+import nexusVisual from "@/../public/nexus.jpg";
 
 export function Nexus() {
 	const nexus = homeNexus;
 
 	return (
-		<Segment className="pt-[120px] max-tablet:pt-16">
-			<Container as="section" className="px-10 max-tablet:px-4">
+		<Segment className="pb-(calc(--segment-padding)/2)">
+			<Container as="section" className="">
 				<div className="flex flex-col gap-5 desktop:flex-row desktop:gap-1.5">
 					<Grid
 						mobile={12}
@@ -19,16 +27,17 @@ export function Nexus() {
 						desktop={6}
 						className="flex justify-start desktop:pl-0!"
 					>
-						<div className="relative aspect-4/3 w-full overflow-hidden rounded-lg bg-(--gallery-100) desktop:aspect-auto desktop:h-[854px]">
-							{/*
-                <Image
-                  src={nexusVisual}
-                  alt=""
-                  fill
-                  className="object-contain"
-                />
-                */}
-						</div>
+						<RevealImage
+							src={nexusVisual}
+							alt="aion Nexus - Enterprise AI solutions with forward-deployed engineers and model optimization"
+							fill
+							sizes="(max-width: 720px) 100vw, (max-width: 1079px) 100vw, 50vw"
+							wrapperClassName="relative aspect-4/3 w-full rounded-lg desktop:aspect-auto desktop:h-[854px]"
+							imageClassName="object-contain"
+							placeholder="blur"
+							duration={500}
+							startScale={1.5}
+						/>
 					</Grid>
 
 					<Grid mobile={12} tablet={12} desktop={4} offsetLeftAlt={0}>
@@ -72,30 +81,64 @@ export function Nexus() {
 								</RevealText>
 							</RevealGroup>
 
-							<div className="flex w-full max-w-[565px] items-start gap-6 pb-16 max-tablet:max-w-full max-tablet:pb-8">
-								<button
+							<div className="flex w-full max-w-[565px] items-center gap-6 pb-16 max-tablet:max-w-full max-tablet:pb-8">
+								{/* <button
 									type="button"
-									className="inline-flex h-[38px] items-center justify-center px-3 py-2 font-sans text-(length:--text-sm-14px) font-medium leading-5 text-(--bunker-800)"
+									className="inline-flex h-[38px] cursor-pointer items-center justify-center px-3 py-2 font-sans text-(length:--text-sm-14px) font-medium leading-5 text-(--bunker-800)"
 								>
 									<span>{nexus.ctas[0]}</span>
 									<span className="ml-2 text-base leading-none">›</span>
-								</button>
+								</button> */}
 
 								<div className="flex h-[38px] items-center">
-									<button
-										type="button"
-										className="inline-flex h-[38px] items-center justify-center border border-(--gallery-800) bg-(--alabaster-25) px-3 py-2 font-sans text-(length:--text-sm-14px) font-medium leading-5 text-(--bunker-800) shadow-[0px_1px_1px_0.05px_rgba(24,24,27,0.24)]"
+									<Link
+										href="https://cal.com/team/aion-intelligence/aion-introduction-call?layout=month_view"
+										target="_blank"
+										rel="noopener noreferrer"
+										className="inline-flex h-[38px] items-center justify-center border border-(--bunker-800) bg-(--alabaster-25) px-3 py-2 font-sans text-(length:--text-sm-14px) font-medium leading-5 text-(--bunker-800) shadow-[0px_1px_1px_0.05px_rgba(24,24,27,0.24)]"
 									>
 										{nexus.ctas[1]}
-									</button>
-									<span className="h-[38px] w-[6px] bg-transparent" />
-									<button
-										type="button"
-										aria-label="Learn more"
+									</Link>
+									{/* Slashed connector */}
+									<svg
+										width="6"
+										height="38"
+										viewBox="0 0 6 38"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+										className="shrink-0"
+									>
+										<pattern
+											id="slashPatternNexus"
+											patternUnits="userSpaceOnUse"
+											width="4"
+											height="4"
+											patternTransform="rotate(-45)"
+										>
+											<line
+												x1="0"
+												y1="0"
+												x2="0"
+												y2="4"
+												stroke="var(--bunker-800)"
+												strokeWidth="1"
+											/>
+										</pattern>
+										<rect
+											width="6"
+											height="38"
+											fill="url(#slashPatternNexus)"
+										/>
+									</svg>
+									<Link
+										href="https://cal.com/team/aion-intelligence/aion-introduction-call?layout=month_view"
+										target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Book a call"
 										className="inline-flex h-[38px] w-[40px] items-center justify-center border border-[rgba(82,82,90,0.24)] bg-(--bunker-800) text-(--alabaster-25) shadow-[0px_1px_0.5px_0.05px_rgba(24,24,27,0.05)]"
 									>
-										<span className="text-base leading-none">›</span>
-									</button>
+										<HugeiconsIcon icon={ArrowRight01Icon} size={20} />
+									</Link>
 								</div>
 							</div>
 						</div>

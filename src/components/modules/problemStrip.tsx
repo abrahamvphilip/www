@@ -9,6 +9,7 @@ import { Grid } from "@/components/primitives/grid/grid";
 import { Segment } from "@/components/primitives/segment/segment";
 import { RevealGroup } from "@/components/ui/reveal/revealGroup";
 import { RevealText } from "@/components/ui/reveal/revealText";
+import { usePageLoad } from "@/components/ui/pageLoadContext";
 
 const problemMedia =
 	"https://www.figma.com/api/mcp/asset/1376c098-877b-41d4-8093-71f870e626b3";
@@ -39,8 +40,14 @@ export function ProblemStrip() {
 	const timerStartRef = useRef<number | null>(null);
 	const frameRef = useRef<number | null>(null);
 	const statementRef = useRef<HTMLParagraphElement | null>(null);
+	const { isLoaded } = usePageLoad();
 
 	useEffect(() => {
+		// Wait for page loader to finish
+		if (!isLoaded) {
+			return;
+		}
+
 		const tick = (timestamp: number) => {
 			if (timerStartRef.current === null) {
 				timerStartRef.current = timestamp;
@@ -66,9 +73,14 @@ export function ProblemStrip() {
 				window.cancelAnimationFrame(frameRef.current);
 			}
 		};
-	}, []);
+	}, [isLoaded]);
 
 	useEffect(() => {
+		// Wait for page loader to finish
+		if (!isLoaded) {
+			return;
+		}
+
 		let isMounted = true;
 		let cleanupAnimation = () => {};
 
@@ -130,7 +142,7 @@ export function ProblemStrip() {
 			isMounted = false;
 			cleanupAnimation();
 		};
-	}, [activeSlide]);
+	}, [activeSlide, isLoaded]);
 
 	const setSlide = (index: number) => {
 		setActiveSlide(index);

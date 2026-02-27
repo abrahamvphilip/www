@@ -1,63 +1,21 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import React, { useState } from "react";
+
+import { HugeiconsIcon } from "@hugeicons/react";
+import {
+	ArrowRight02Icon,
+	Tick02Icon,
+} from "@hugeicons-pro/core-twotone-rounded";
 
 import { Container } from "@/components/primitives/container/container";
 import { Segment } from "@/components/primitives/segment/segment";
-import { BrandMark } from "@/components/ui/brandMark";
 import { Navbar } from "@/components/modules/navbar";
 import { Footer } from "@/components/modules/footer";
-
-function ArrowRightIcon() {
-	return (
-		<svg
-			width="20"
-			height="20"
-			viewBox="0 0 24 24"
-			fill="none"
-			xmlns="http://www.w3.org/2000/svg"
-			aria-hidden
-		>
-			<path
-				d="M14.43 5.93L20.5 12L14.43 18.07"
-				stroke="currentColor"
-				strokeWidth="1.5"
-				strokeMiterlimit="10"
-				strokeLinecap="round"
-				strokeLinejoin="round"
-			/>
-			<path
-				d="M3.5 12H20.33"
-				stroke="currentColor"
-				strokeWidth="1.5"
-				strokeMiterlimit="10"
-				strokeLinecap="round"
-				strokeLinejoin="round"
-			/>
-		</svg>
-	);
-}
-
-function CheckIcon() {
-	return (
-		<svg
-			width="20"
-			height="20"
-			viewBox="0 0 24 24"
-			fill="none"
-			xmlns="http://www.w3.org/2000/svg"
-			aria-hidden
-		>
-			<path
-				d="M20 6L9 17L4 12"
-				stroke="currentColor"
-				strokeWidth="2"
-				strokeLinecap="round"
-				strokeLinejoin="round"
-			/>
-		</svg>
-	);
-}
+import { Reveal } from "@/components/ui/reveal/reveal";
+import { RevealGroup } from "@/components/ui/reveal/revealGroup";
+import { RevealText } from "@/components/ui/reveal/revealText";
+import { subscribeAction } from "./actions";
 
 type SubmitState = "idle" | "submitting" | "success" | "error";
 
@@ -65,15 +23,19 @@ export default function WaitlistPage() {
 	const [email, setEmail] = useState("");
 	const [state, setState] = useState<SubmitState>("idle");
 
-	function handleSubmit(e: FormEvent<HTMLFormElement>) {
+	async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
 		if (!email.trim() || state === "submitting") return;
 
 		setState("submitting");
 
-		setTimeout(() => {
+		const result = await subscribeAction(email);
+
+		if (result.success) {
 			setState("success");
-		}, 1200);
+		} else {
+			setState("error");
+		}
 	}
 
 	const isSuccess = state === "success";
@@ -85,45 +47,62 @@ export default function WaitlistPage() {
 			<Segment className="py-0!">
 				<Container
 					as="section"
-					className="flex min-h-[calc(100vh-72px)] flex-col items-center justify-center px-10 max-tablet:px-4"
+					className="flex min-h-[80vh] flex-col items-center justify-center px-10 max-tablet:px-4"
 				>
-					<div className="flex w-full max-w-[640px] flex-col items-center py-20 max-tablet:py-12">
+					<RevealGroup className="flex w-full max-w-[640px] flex-col items-center py-20 max-tablet:py-12">
 						{/* Eyebrow */}
-						<div className="flex items-center gap-3 pb-8">
+						<Reveal
+							phase="eyebrow"
+							className="flex items-center gap-3 pb-8"
+						>
 							<span aria-hidden className="h-px w-8 bg-(--bunker-150)" />
 							<p className="font-sans text-(length:--text-xs-12px) font-medium uppercase leading-4 tracking-[0.5px] text-(--bunker-325)">
 								Early Access
 							</p>
 							<span aria-hidden className="h-px w-8 bg-(--bunker-150)" />
-						</div>
+						</Reveal>
 
 						{/* Heading */}
-						<h1 className="text-center font-display text-(length:--text-5xl-48px) font-light leading-[56px] tracking-[-0.48px] text-(--bunker-800) max-tablet:leading-[44px]">
+						<RevealText
+							as="h1"
+							phase="heading"
+							split="words"
+							className="text-center font-display text-(length:--text-5xl-48px) font-light leading-[56px] tracking-[-0.48px] text-(--bunker-800) max-tablet:leading-[44px]"
+						>
 							Join the waitlist
-						</h1>
-						<p className="pt-1 text-center font-display text-(length:--text-5xl-48px) font-light leading-[56px] tracking-[-0.48px] text-(--bunker-325) max-tablet:leading-[44px]">
+						</RevealText>
+						<RevealText
+							as="p"
+							phase="subheading"
+							split="words"
+							className="pt-1 text-center font-display text-(length:--text-5xl-48px) font-light leading-[56px] tracking-[-0.48px] text-(--bunker-325) max-tablet:leading-[44px]"
+						>
 							Be among the first
-						</p>
+						</RevealText>
 
 						{/* Body copy */}
-						<p className="max-w-[480px] pt-8 text-center font-sans text-(length:--text-base-16px) font-normal leading-6 text-(--gallery-550)">
-							We're building the next generation of AI infrastructure. Sign up
-							for early access and we'll notify you when we launch.
-						</p>
+						<RevealText
+							as="p"
+							phase="description"
+							split="words"
+							className="max-w-[480px] pt-8 text-center font-sans text-(length:--text-base-16px) font-normal leading-6 text-(--gallery-550)"
+						>
+							{"We're building the next generation of AI infrastructure. Sign up for early access and we'll notify you when we launch."}
+						</RevealText>
 
 						{/* Form */}
-						<div className="w-full pt-12 max-tablet:pt-8">
+						<Reveal phase="cta" className="w-full pt-12 max-tablet:pt-8">
 							{isSuccess ? (
 								<div className="flex flex-col items-center gap-4">
 									<div className="flex h-12 w-12 items-center justify-center rounded-full bg-(--eucalyptus-50) text-(--eucalyptus-325)">
-										<CheckIcon />
+										<HugeiconsIcon icon={Tick02Icon} size={20} />
 									</div>
 									<div className="text-center">
 										<p className="font-sans text-(length:--text-lg-18px) font-medium leading-7 text-(--bunker-800)">
-											You're on the list
+											You&apos;re on the list
 										</p>
 										<p className="pt-1 font-sans text-(length:--text-sm-14px) font-normal leading-5 text-(--gallery-550)">
-											We'll reach out when it's your turn.
+											We&apos;ll reach out when it&apos;s your turn.
 										</p>
 									</div>
 								</div>
@@ -150,51 +129,20 @@ export default function WaitlistPage() {
 										<span>
 											{state === "submitting" ? "Joining..." : "Join Waitlist"}
 										</span>
-										{state !== "submitting" && <ArrowRightIcon />}
+										{state !== "submitting" && (
+											<HugeiconsIcon icon={ArrowRight02Icon} size={20} />
+										)}
 										<span className="pointer-events-none absolute -inset-px rounded-[inherit] shadow-[inset_0px_8px_16px_0px_rgba(255,255,255,0.06),inset_0px_2px_0px_0px_rgba(255,255,255,0.04)]" />
 									</button>
 								</form>
 							)}
-						</div>
-
-						{/* Trust signals */}
-						{!isSuccess && (
-							<div className="flex items-center gap-6 pt-6 max-tablet:flex-col max-tablet:gap-3">
-								<div className="flex items-center gap-1.5">
-									<span
-										aria-hidden
-										className="h-1.5 w-1.5 rounded-full bg-(--eucalyptus-325)"
-									/>
-									<p className="font-sans text-(length:--text-xs-12px) font-normal leading-4 text-(--bunker-325)">
-										No spam, ever
-									</p>
-								</div>
-								<div className="flex items-center gap-1.5">
-									<span
-										aria-hidden
-										className="h-1.5 w-1.5 rounded-full bg-(--eucalyptus-325)"
-									/>
-									<p className="font-sans text-(length:--text-xs-12px) font-normal leading-4 text-(--bunker-325)">
-										Unsubscribe anytime
-									</p>
-								</div>
-								<div className="flex items-center gap-1.5">
-									<span
-										aria-hidden
-										className="h-1.5 w-1.5 rounded-full bg-(--eucalyptus-325)"
-									/>
-									<p className="font-sans text-(length:--text-xs-12px) font-normal leading-4 text-(--bunker-325)">
-										First access guaranteed
-									</p>
-								</div>
-							</div>
-						)}
-
-						{/* Bottom brand watermark */}
-						<div className="pt-20 max-tablet:pt-12">
-							<BrandMark className="opacity-30" />
-						</div>
-					</div>
+							{state === "error" && (
+								<p className="pt-2 text-center font-sans text-(length:--text-sm-14px) text-(--persian-red-325)">
+									Something went wrong. Please try again.
+								</p>
+							)}
+						</Reveal>
+					</RevealGroup>
 				</Container>
 			</Segment>
 

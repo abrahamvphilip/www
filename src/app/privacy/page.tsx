@@ -9,9 +9,12 @@ import {
 } from "@/components/modules/legalPageShell";
 
 export const metadata: Metadata = {
-	title: "Privacy Policy | aion",
+	title: "Privacy Policy - Data Protection & GDPR Compliance",
 	description:
-		"How AION Technologies Inc. collects, uses, discloses, and protects your information.",
+		"Learn how aion Technologies Inc. protects your data. Our privacy policy covers GDPR, CCPA, and DPDPA compliance for our GPU cloud platform. We are committed to transparent data practices.",
+	alternates: {
+		canonical: "https://aion.ai/privacy",
+	},
 };
 
 export default function PrivacyPolicyPage() {

@@ -1,6 +1,9 @@
 import type { ReactNode } from "react";
+import Link from "next/link";
 
 import { Container } from "@/components/primitives/container/container";
+import { Grid } from "@/components/primitives/grid/grid";
+import { Segment } from "@/components/primitives/segment/segment";
 import { Navbar } from "@/components/modules/navbar";
 import { Footer } from "@/components/modules/footer";
 
@@ -19,20 +22,26 @@ export function LegalPageShell({
 		<main className="min-h-screen bg-(--alabaster-25) text-(--bunker-800)">
 			<Navbar />
 
-			<Container as="article" className="pb-24 pt-20 max-tablet:pt-12">
-				<div className="mx-auto max-w-[800px]">
-					<header className="pb-12">
-						<h1 className="font-display text-(length:--text-5xl-48px) font-light leading-[1.15] tracking-[-0.48px] text-(--bunker-800) max-tablet:text-(length:--text-4xl-36px)">
-							{title}
-						</h1>
-						<p className="pt-4 font-sans text-(length:--text-sm-14px) font-normal leading-5 text-(--bunker-325)">
-							{effectiveDate}
-						</p>
-					</header>
+			<Segment className="py-0!">
+				<Container as="article" className="pb-24 pt-20 max-tablet:pt-12">
+					<div className="flex justify-center">
+						<Grid mobile={12} tablet={12} desktop={8}>
+							<header className="pb-12">
+								<h1 className="font-display text-(length:--text-5xl-48px) font-light leading-[1.15] tracking-[-0.48px] text-(--bunker-800) max-tablet:text-(length:--text-4xl-36px)">
+									{title}
+								</h1>
+								<p className="pt-4 font-sans text-(length:--text-sm-14px) font-normal leading-5 text-(--bunker-325)">
+									{effectiveDate}
+								</p>
+							</header>
 
-					<div className="legal-content flex flex-col gap-10">{children}</div>
-				</div>
-			</Container>
+							<div className="legal-content flex flex-col gap-10">
+								{children}
+							</div>
+						</Grid>
+					</div>
+				</Container>
+			</Segment>
 
 			<Footer />
 		</main>
@@ -142,14 +151,26 @@ export function LegalLink({
 	href: string;
 	children: ReactNode;
 }) {
+	const isExternal = href.startsWith("http") || href.startsWith("mailto:");
+	const linkClassName =
+		"text-(--bunker-800) underline decoration-(--bunker-800)/20 underline-offset-2 transition-colors hover:decoration-(--bunker-800)/60";
+
+	if (isExternal) {
+		return (
+			<a
+				href={href}
+				className={linkClassName}
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				{children}
+			</a>
+		);
+	}
+
 	return (
-		<a
-			href={href}
-			className="text-(--bunker-800) underline decoration-(--bunker-800)/20 underline-offset-2 transition-colors hover:decoration-(--bunker-800)/60"
-			target="_blank"
-			rel="noopener noreferrer"
-		>
+		<Link href={href} className={linkClassName}>
 			{children}
-		</a>
+		</Link>
 	);
 }

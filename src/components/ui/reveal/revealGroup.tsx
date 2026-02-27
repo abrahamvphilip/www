@@ -5,6 +5,7 @@ import { createContext, useContext, useEffect, useMemo, useRef, useState } from 
 import type { ReactNode } from "react";
 
 import type { RevealProfile } from "./timings";
+import { usePageLoad } from "../pageLoadContext";
 
 type RevealGroupContextValue = {
 	isActive: boolean;
@@ -29,14 +30,15 @@ export function RevealGroup({
 	children,
 	className,
 	once = true,
-	threshold = 0.35,
-	rootMargin = "0px 0px -12% 0px",
+	threshold = 0.15,
+	rootMargin = "0px 0px -5% 0px",
 	profile = "cinematic",
 }: RevealGroupProps) {
 	const rootRef = useRef<HTMLDivElement | null>(null);
 	const [isInView, setIsInView] = useState(false);
 	const [hasTriggered, setHasTriggered] = useState(false);
 	const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+	const { isLoaded } = usePageLoad();
 
 	useEffect(() => {
 		if (typeof window === "undefined") {
@@ -53,6 +55,11 @@ export function RevealGroup({
 	}, []);
 
 	useEffect(() => {
+		// Wait for page loader to finish before observing
+		if (!isLoaded) {
+			return;
+		}
+
 		if (prefersReducedMotion) {
 			return;
 		}
@@ -88,7 +95,7 @@ export function RevealGroup({
 		observer.observe(node);
 
 		return () => observer.disconnect();
-	}, [once, prefersReducedMotion, rootMargin, threshold]);
+	}, [isLoaded, once, prefersReducedMotion, rootMargin, threshold]);
 
 	const isActive = prefersReducedMotion || (once ? hasTriggered : isInView);
 
